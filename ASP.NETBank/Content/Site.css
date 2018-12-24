@@ -15,3 +15,32 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.box {
+    width: 600px;
+    height: 440px;
+    background-color: white;
+    z-index: 1;
+    position: absolute;
+    top: 80px;
+    right: 365px;
+    border-radius: 15px;
+    border: 1px solid white;
+} 
+.btn1 {
+    width: 160px;
+    height: 32px;
+    z-index: 1;
+    position: absolute;
+    top: 400px;
+    left: 185px;
+}
+.btn2 {
+    width: 160px;
+    height: 32px;
+    z-index: 1;
+    position: absolute;
+    top: 400px;
+    right: 165px;
+}
+

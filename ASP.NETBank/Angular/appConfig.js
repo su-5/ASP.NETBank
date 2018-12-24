@@ -17,6 +17,12 @@
                 controller: "clientsController"
             });
 
+            $stateProvider.state("Bankomat", {
+                url: "/Bankomat",
+                templateUrl: "Angular/Components/Bankomat/Bankomat.html",
+                controller: "bankomatController"
+            });
+
             $urlRouterProvider.otherwise("/Index");
         }]);
 })();
