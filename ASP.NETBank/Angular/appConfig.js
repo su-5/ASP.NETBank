@@ -11,11 +11,11 @@
                 controller: "indexController"
             });
 
-            //$stateProvider.state("mainPage/AdminPanel", {
-            //    url: "/adminPanel",
-            //    templateUrl: "Angular/Views/AdminPanel.html",
-            //    controller: "adminController"
-            //});
+            $stateProvider.state("Clients", {
+                url: "/Clients",
+                templateUrl: "Angular/Components/Clients/Clients.html",
+                controller: "clientsController"
+            });
 
             $urlRouterProvider.otherwise("/Index");
         }]);

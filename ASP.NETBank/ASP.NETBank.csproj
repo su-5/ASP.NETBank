@@ -228,6 +228,8 @@
   <ItemGroup>
     <Content Include="Angular\app.js" />
     <Content Include="Angular\appConfig.js" />
+    <Content Include="Angular\Components\Clients\Clients.html" />
+    <Content Include="Angular\Components\Clients\ClientsCtrl.js" />
     <Content Include="Angular\Components\Index\IndexCtrl.js" />
     <Content Include="Angular\Services\loadingService.js" />
     <Content Include="Angular\Components\Index\Index.html" />
