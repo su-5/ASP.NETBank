@@ -233,6 +233,10 @@
     <Content Include="Angular\Components\Index\IndexCtrl.js" />
     <Content Include="Angular\Services\loadingService.js" />
     <Content Include="Angular\Components\Index\Index.html" />
+    <Content Include="App_Data\ASP.NETBank.mdf" />
+    <Content Include="App_Data\ASP.NETBank_log.ldf">
+      <DependentUpon>ASP.NETBank.mdf</DependentUpon>
+    </Content>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -1220,9 +1224,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\version.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>

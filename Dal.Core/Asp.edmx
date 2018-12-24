@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ASP.NETBankModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PlaceOfWork">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamePlaseOfWork" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateBirth" Type="datetime" Nullable="false" />
+          <Property Name="PassportSeries" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="PassportNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassportIssuedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateIssuePassport" Type="datetime" Nullable="false" />
+          <Property Name="IDNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneHouse" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobilePhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="E-mail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlaceOfWorkID" Type="int" />
+        </EntityType>
+        <Association Name="FK_dbo_Subcategories_dbo_Categories_CategoriesId">
+          <End Role="PlaceOfWork" Type="Self.PlaceOfWork" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlaceOfWork">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="PlaceOfWorkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ASPNETBankModelContainer">
+          <EntitySet Name="PlaceOfWork" EntityType="Self.PlaceOfWork" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Subcategories_dbo_Categories_CategoriesId" Association="Self.FK_dbo_Subcategories_dbo_Categories_CategoriesId">
+            <End Role="PlaceOfWork" EntitySet="PlaceOfWork" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ASP.NETBankModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PlaceOfWork">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamePlaseOfWork" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_dbo_Subcategories_dbo_Categories_CategoriesId" FromRole="PlaceOfWork" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PassportSeries" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassportNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassportIssuedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateIssuePassport" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneHouse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobilePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PlaceOfWorkID" Type="Int32" />
+          <NavigationProperty Name="PlaceOfWork" Relationship="Self.FK_dbo_Subcategories_dbo_Categories_CategoriesId" FromRole="User" ToRole="PlaceOfWork" />
+        </EntityType>
+        <Association Name="FK_dbo_Subcategories_dbo_Categories_CategoriesId">
+          <End Role="PlaceOfWork" Type="Self.PlaceOfWork" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlaceOfWork">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="PlaceOfWorkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AspNetBankEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PlaceOfWork" EntityType="Self.PlaceOfWork" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_dbo_Subcategories_dbo_Categories_CategoriesId" Association="Self.FK_dbo_Subcategories_dbo_Categories_CategoriesId">
+            <End Role="PlaceOfWork" EntitySet="PlaceOfWork" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ASPNETBankModelContainer" CdmEntityContainer="AspNetBankEntities">
+          <EntitySetMapping Name="PlaceOfWork">
+            <EntityTypeMapping TypeName="ASP.NETBankModel.PlaceOfWork">
+              <MappingFragment StoreEntitySet="PlaceOfWork">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NamePlaseOfWork" ColumnName="NamePlaseOfWork" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="ASP.NETBankModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="DateBirth" ColumnName="DateBirth" />
+                <ScalarProperty Name="PassportSeries" ColumnName="PassportSeries" />
+                <ScalarProperty Name="PassportNo" ColumnName="PassportNo" />
+                <ScalarProperty Name="PassportIssuedBy" ColumnName="PassportIssuedBy" />
+                <ScalarProperty Name="DateIssuePassport" ColumnName="DateIssuePassport" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="PhoneHouse" ColumnName="PhoneHouse" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+                <ScalarProperty Name="PlaceOfWorkID" ColumnName="PlaceOfWorkID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

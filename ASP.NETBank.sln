@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NETBank", "ASP.NETBank\ASP.NETBank.csproj", "{63983421-9F99-4C70-9C08-A817F8A48F30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal.Core", "Dal.Core\Dal.Core.csproj", "{AF21AE8A-0454-46B5-AD03-67EE2CFF98EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bll.Core", "Bll.Core\Bll.Core.csproj", "{25791AA8-A885-450F-907B-E971E4009764}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{63983421-9F99-4C70-9C08-A817F8A48F30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63983421-9F99-4C70-9C08-A817F8A48F30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63983421-9F99-4C70-9C08-A817F8A48F30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF21AE8A-0454-46B5-AD03-67EE2CFF98EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF21AE8A-0454-46B5-AD03-67EE2CFF98EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF21AE8A-0454-46B5-AD03-67EE2CFF98EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF21AE8A-0454-46B5-AD03-67EE2CFF98EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25791AA8-A885-450F-907B-E971E4009764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25791AA8-A885-450F-907B-E971E4009764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25791AA8-A885-450F-907B-E971E4009764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25791AA8-A885-450F-907B-E971E4009764}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
