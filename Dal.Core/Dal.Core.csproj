@@ -87,6 +87,7 @@
     <Compile Include="GenericRepositoryModel\Interfaces\IUserDal.cs" />
     <Compile Include="GenericRepository\GenericRepository.cs" />
     <Compile Include="GenericRepository\IGenericRepository.cs" />
+    <Compile Include="ModelDTO\ClientsDto.cs" />
     <Compile Include="PlaceOfWork.cs">
       <DependentUpon>Asp.tt</DependentUpon>
     </Compile>
@@ -136,8 +137,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ModelDTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
