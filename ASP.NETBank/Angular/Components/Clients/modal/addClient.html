@@ -1,0 +1,48 @@
+﻿<div class="modal-header">
+    <h3 style="margin-top: -8px;" class="text-center">
+        Добавление нового клиента
+    </h3>
+</div>
+<div class="modal-body">
+    <form class="form-inline" name="addClientForm">
+        <div class="row">
+            <div class="col-lg-4">
+                <input type="text" class="form-control input-height" placeholder="Фамилия">
+            </div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control input-height" placeholder="Имя">
+            </div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control input-height" placeholder="Отчество">
+            </div>
+        </div>
+        <div class="row interval">
+            <div class="col-lg-4">
+                <input type="text" onfocus="(this.type='date')" class="form-control input-height" placeholder="Дата рождения">
+            </div>
+            <div class="col-lg-4">
+                <select id="" class="form-control input-height" name="" ng-model="client.Sex" required ng-options="obj.Id as obj.Name for obj in listSex">
+                    <option value="">-- Выберите пол --</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control input-height" placeholder="Last name">
+            </div>
+        </div>
+        <div class="row interval">
+            <div class="col-lg-4">
+                <input type="text" class="form-control input-height" placeholder="Фамилия">
+            </div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control input-height" placeholder="Имя">
+            </div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control input-height" placeholder="Отчество">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="submit" ng-click="AddNewProduct(Product,addProductForm)">Добавить</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Отмена</button>
+</div>

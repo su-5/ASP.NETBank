@@ -12,14 +12,14 @@ namespace Dal.Core.ModelDTO
         public string Name { get; set; }
         public string Surname { get; set; }
         public string MiddleName { get; set; }
-        public System.DateTime DateBirth { get; set; }
-        public string PassportSeries { get; set; }
-        public string PassportNo { get; set; }
-        public string PassportIssuedBy { get; set; }
-        public System.DateTime DateIssuePassport { get; set; }
-        public string IDNumber { get; set; }
-        public string PhoneHouse { get; set; }
-        public string MobilePhone { get; set; }
+        public string DateBirth { get; set; }
+        public string PassportSeries { get; set; } //Серия паспорта
+        public string PassportNo { get; set; } //№ паспорта
+        public string PassportIssuedBy { get; set; } //Кем выдан
+        public string DateIssuePassport { get; set; } //Дата выдачи
+        public string IDNumber { get; set; } // Идент. номер
+        public string PhoneHouse { get; set; } //
+        public string MobilePhone { get; set; } //
         public string E_mail { get; set; }
     }
 }

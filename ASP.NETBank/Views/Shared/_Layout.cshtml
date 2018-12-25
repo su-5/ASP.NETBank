@@ -11,9 +11,17 @@
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <body ng-app="Web">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div ui-sref="Index" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <h1 style="color: #1bff00; height: 23px; margin-top: 6px">Asp.NetBank</h1>
+        </div>
+    </div>
+    <div class="msg-overlay" ng-show="loadingIsShow">
+        <div class="msg">
+            <span>
+                Обработка данных...
+                <i class="fa fa-refresh fa-spin fa-fw"></i>
+            </span>
         </div>
     </div>
     <div class="container body-content">
