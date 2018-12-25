@@ -4,13 +4,48 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище ASP.NETBankModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище ASP.NETBankModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Citizenship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Disability">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FamilyStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="PlaceOfWork">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NamePlaseOfWork" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sex">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -30,7 +65,92 @@
           <Property Name="MobilePhone" Type="nvarchar" MaxLength="50" />
           <Property Name="E-mail" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PlaceOfWorkID" Type="int" />
+          <Property Name="Position" Type="nvarchar" MaxLength="50" />
+          <Property Name="CityRegistrationID" Type="int" Nullable="false" />
+          <Property Name="PlaceResidence" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FamilyStatusID" Type="int" Nullable="false" />
+          <Property Name="CitizenshipID" Type="int" Nullable="false" />
+          <Property Name="DisabilityID" Type="int" Nullable="false" />
+          <Property Name="Retiree" Type="bit" Nullable="false" />
+          <Property Name="MonthlyIncome" Type="float" />
+          <Property Name="LiableMilitaryService" Type="bit" Nullable="false" />
+          <Property Name="PlaceBirth" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CityFactResidenceID" Type="int" Nullable="false" />
+          <Property Name="ActualAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SexID" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_dbo_Citizenship_dbo_CitizenshipID">
+          <End Role="Citizenship" Type="Self.Citizenship" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Citizenship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CitizenshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_City_dbo_CityFactResidenceID">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CityFactResidenceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_City_dbo_CityRegistrationID">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CityRegistrationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Disability_dbo_DisabilityID">
+          <End Role="Disability" Type="Self.Disability" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disability">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DisabilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FamilyStatus_dbo_FamilyStatusID">
+          <End Role="FamilyStatus" Type="Self.FamilyStatus" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilyStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="FamilyStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Sex_dbo_SexID">
+          <End Role="Sex" Type="Self.Sex" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sex">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="SexID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_Subcategories_dbo_Categories_CategoriesId">
           <End Role="PlaceOfWork" Type="Self.PlaceOfWork" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -44,15 +164,43 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище ASPNETBankModelContainer">
+          <EntitySet Name="Citizenship" EntityType="Self.Citizenship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disability" EntityType="Self.Disability" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamilyStatus" EntityType="Self.FamilyStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlaceOfWork" EntityType="Self.PlaceOfWork" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sex" EntityType="Self.Sex" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Citizenship_dbo_CitizenshipID" Association="Self.FK_dbo_Citizenship_dbo_CitizenshipID">
+            <End Role="Citizenship" EntitySet="Citizenship" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_City_dbo_CityFactResidenceID" Association="Self.FK_dbo_City_dbo_CityFactResidenceID">
+            <End Role="City" EntitySet="City" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_City_dbo_CityRegistrationID" Association="Self.FK_dbo_City_dbo_CityRegistrationID">
+            <End Role="City" EntitySet="City" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Disability_dbo_DisabilityID" Association="Self.FK_dbo_Disability_dbo_DisabilityID">
+            <End Role="Disability" EntitySet="Disability" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FamilyStatus_dbo_FamilyStatusID" Association="Self.FK_dbo_FamilyStatus_dbo_FamilyStatusID">
+            <End Role="FamilyStatus" EntitySet="FamilyStatus" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Sex_dbo_SexID" Association="Self.FK_dbo_Sex_dbo_SexID">
+            <End Role="Sex" EntitySet="Sex" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_Subcategories_dbo_Categories_CategoriesId" Association="Self.FK_dbo_Subcategories_dbo_Categories_CategoriesId">
             <End Role="PlaceOfWork" EntitySet="PlaceOfWork" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ASP.NETBankModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -83,6 +231,25 @@
           <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PlaceOfWorkID" Type="Int32" />
           <NavigationProperty Name="PlaceOfWork" Relationship="Self.FK_dbo_Subcategories_dbo_Categories_CategoriesId" FromRole="User" ToRole="PlaceOfWork" />
+          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityRegistrationID" Type="Int32" Nullable="false" />
+          <Property Name="PlaceResidence" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FamilyStatusID" Type="Int32" Nullable="false" />
+          <Property Name="CitizenshipID" Type="Int32" Nullable="false" />
+          <Property Name="DisabilityID" Type="Int32" Nullable="false" />
+          <Property Name="Retiree" Type="Boolean" Nullable="false" />
+          <Property Name="MonthlyIncome" Type="Double" />
+          <Property Name="LiableMilitaryService" Type="Boolean" Nullable="false" />
+          <Property Name="PlaceBirth" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityFactResidenceID" Type="Int32" Nullable="false" />
+          <Property Name="ActualAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SexID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Citizenship" Relationship="ASP.NETBankModel.FK_dbo_Citizenship_dbo_CitizenshipID" FromRole="User" ToRole="Citizenship" />
+          <NavigationProperty Name="City" Relationship="ASP.NETBankModel.FK_dbo_City_dbo_CityFactResidenceID" FromRole="User" ToRole="City" />
+          <NavigationProperty Name="City1" Relationship="ASP.NETBankModel.FK_dbo_City_dbo_CityRegistrationID" FromRole="User" ToRole="City" />
+          <NavigationProperty Name="Disability" Relationship="ASP.NETBankModel.FK_dbo_Disability_dbo_DisabilityID" FromRole="User" ToRole="Disability" />
+          <NavigationProperty Name="FamilyStatus" Relationship="ASP.NETBankModel.FK_dbo_FamilyStatus_dbo_FamilyStatusID" FromRole="User" ToRole="FamilyStatus" />
+          <NavigationProperty Name="Sex" Relationship="ASP.NETBankModel.FK_dbo_Sex_dbo_SexID" FromRole="User" ToRole="Sex" />
         </EntityType>
         <Association Name="FK_dbo_Subcategories_dbo_Categories_CategoriesId">
           <End Role="PlaceOfWork" Type="Self.PlaceOfWork" Multiplicity="0..1" />
@@ -103,7 +270,149 @@
             <End Role="PlaceOfWork" EntitySet="PlaceOfWork" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
+          <EntitySet Name="Citizenship" EntityType="ASP.NETBankModel.Citizenship" />
+          <EntitySet Name="City" EntityType="ASP.NETBankModel.City" />
+          <EntitySet Name="Disability" EntityType="ASP.NETBankModel.Disability" />
+          <EntitySet Name="FamilyStatus" EntityType="ASP.NETBankModel.FamilyStatus" />
+          <EntitySet Name="Sex" EntityType="ASP.NETBankModel.Sex" />
+          <AssociationSet Name="FK_dbo_Citizenship_dbo_CitizenshipID" Association="ASP.NETBankModel.FK_dbo_Citizenship_dbo_CitizenshipID">
+            <End Role="Citizenship" EntitySet="Citizenship" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_City_dbo_CityFactResidenceID" Association="ASP.NETBankModel.FK_dbo_City_dbo_CityFactResidenceID">
+            <End Role="City" EntitySet="City" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_City_dbo_CityRegistrationID" Association="ASP.NETBankModel.FK_dbo_City_dbo_CityRegistrationID">
+            <End Role="City" EntitySet="City" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Disability_dbo_DisabilityID" Association="ASP.NETBankModel.FK_dbo_Disability_dbo_DisabilityID">
+            <End Role="Disability" EntitySet="Disability" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FamilyStatus_dbo_FamilyStatusID" Association="ASP.NETBankModel.FK_dbo_FamilyStatus_dbo_FamilyStatusID">
+            <End Role="FamilyStatus" EntitySet="FamilyStatus" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Sex_dbo_SexID" Association="ASP.NETBankModel.FK_dbo_Sex_dbo_SexID">
+            <End Role="Sex" EntitySet="Sex" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Citizenship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="ASP.NETBankModel.FK_dbo_Citizenship_dbo_CitizenshipID" FromRole="Citizenship" ToRole="User" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="ASP.NETBankModel.FK_dbo_City_dbo_CityFactResidenceID" FromRole="City" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ASP.NETBankModel.FK_dbo_City_dbo_CityRegistrationID" FromRole="City" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Disability">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="ASP.NETBankModel.FK_dbo_Disability_dbo_DisabilityID" FromRole="Disability" ToRole="User" />
+        </EntityType>
+        <EntityType Name="FamilyStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="ASP.NETBankModel.FK_dbo_FamilyStatus_dbo_FamilyStatusID" FromRole="FamilyStatus" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Sex">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="ASP.NETBankModel.FK_dbo_Sex_dbo_SexID" FromRole="Sex" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_dbo_Citizenship_dbo_CitizenshipID">
+          <End Type="ASP.NETBankModel.Citizenship" Role="Citizenship" Multiplicity="1" />
+          <End Type="ASP.NETBankModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Citizenship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CitizenshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_City_dbo_CityFactResidenceID">
+          <End Type="ASP.NETBankModel.City" Role="City" Multiplicity="1" />
+          <End Type="ASP.NETBankModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CityFactResidenceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_City_dbo_CityRegistrationID">
+          <End Type="ASP.NETBankModel.City" Role="City" Multiplicity="1" />
+          <End Type="ASP.NETBankModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CityRegistrationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Disability_dbo_DisabilityID">
+          <End Type="ASP.NETBankModel.Disability" Role="Disability" Multiplicity="1" />
+          <End Type="ASP.NETBankModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disability">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DisabilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FamilyStatus_dbo_FamilyStatusID">
+          <End Type="ASP.NETBankModel.FamilyStatus" Role="FamilyStatus" Multiplicity="1" />
+          <End Type="ASP.NETBankModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilyStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="FamilyStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Sex_dbo_SexID">
+          <End Type="ASP.NETBankModel.Sex" Role="Sex" Multiplicity="1" />
+          <End Type="ASP.NETBankModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sex">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="SexID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -121,6 +430,19 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="ASP.NETBankModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="SexID" ColumnName="SexID" />
+                <ScalarProperty Name="ActualAddress" ColumnName="ActualAddress" />
+                <ScalarProperty Name="CityFactResidenceID" ColumnName="CityFactResidenceID" />
+                <ScalarProperty Name="PlaceBirth" ColumnName="PlaceBirth" />
+                <ScalarProperty Name="LiableMilitaryService" ColumnName="LiableMilitaryService" />
+                <ScalarProperty Name="MonthlyIncome" ColumnName="MonthlyIncome" />
+                <ScalarProperty Name="Retiree" ColumnName="Retiree" />
+                <ScalarProperty Name="DisabilityID" ColumnName="DisabilityID" />
+                <ScalarProperty Name="CitizenshipID" ColumnName="CitizenshipID" />
+                <ScalarProperty Name="FamilyStatusID" ColumnName="FamilyStatusID" />
+                <ScalarProperty Name="PlaceResidence" ColumnName="PlaceResidence" />
+                <ScalarProperty Name="CityRegistrationID" ColumnName="CityRegistrationID" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
@@ -135,6 +457,46 @@
                 <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
                 <ScalarProperty Name="E_mail" ColumnName="E-mail" />
                 <ScalarProperty Name="PlaceOfWorkID" ColumnName="PlaceOfWorkID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Citizenship">
+            <EntityTypeMapping TypeName="ASP.NETBankModel.Citizenship">
+              <MappingFragment StoreEntitySet="Citizenship">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="ASP.NETBankModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disability">
+            <EntityTypeMapping TypeName="ASP.NETBankModel.Disability">
+              <MappingFragment StoreEntitySet="Disability">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamilyStatus">
+            <EntityTypeMapping TypeName="ASP.NETBankModel.FamilyStatus">
+              <MappingFragment StoreEntitySet="FamilyStatus">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sex">
+            <EntityTypeMapping TypeName="ASP.NETBankModel.Sex">
+              <MappingFragment StoreEntitySet="Sex">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

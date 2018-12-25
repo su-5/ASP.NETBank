@@ -4,10 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c2f420f27da5432991d151ccc4a1ee42" Name="Diagram1">
-        <EntityTypeShape EntityType="ASP.NETBankModel.PlaceOfWork" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+      <Diagram DiagramId="c2f420f27da5432991d151ccc4a1ee42" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="ASP.NETBankModel.PlaceOfWork" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ASP.NETBankModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="ASP.NETBankModel.FK_dbo_Subcategories_dbo_Categories_CategoriesId" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ASP.NETBankModel.Citizenship" Width="1.5" PointX="5.375" PointY="1" />
+        <EntityTypeShape EntityType="ASP.NETBankModel.City" Width="1.5" PointX="0.75" PointY="3.125" />
+        <EntityTypeShape EntityType="ASP.NETBankModel.Disability" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="ASP.NETBankModel.FamilyStatus" Width="1.5" PointX="5.375" PointY="3.375" />
+        <EntityTypeShape EntityType="ASP.NETBankModel.Sex" Width="1.5" PointX="0.625" PointY="5.625" />
+        <AssociationConnector Association="ASP.NETBankModel.FK_dbo_Citizenship_dbo_CitizenshipID" />
+        <AssociationConnector Association="ASP.NETBankModel.FK_dbo_City_dbo_CityFactResidenceID" />
+        <AssociationConnector Association="ASP.NETBankModel.FK_dbo_City_dbo_CityRegistrationID" />
+        <AssociationConnector Association="ASP.NETBankModel.FK_dbo_Disability_dbo_DisabilityID" />
+        <AssociationConnector Association="ASP.NETBankModel.FK_dbo_FamilyStatus_dbo_FamilyStatusID" />
+        <AssociationConnector Association="ASP.NETBankModel.FK_dbo_Sex_dbo_SexID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

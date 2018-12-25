@@ -42,7 +42,7 @@
                 {
                     field: 'PassportSeries',
                     filter: true,
-                    width: "5%",
+                    width: "8%",
                     displayName: "Серия паспорта",
                 },
                 {
@@ -68,13 +68,13 @@
                 },
                 {
                     field: 'E_mail',
-                    width: "10%",
-                    displayName: 'E_mail',
-                },
-                {
-                    field: 'E_mail',
                     displayName: 'E_mail',
                 }
+                //{
+                //    field: 'PlaceOfWork',
+                //    displayName: 'Место работы',
+                //    cellTemplate: '<p style="margin-left:80px;" >{{row.entity.PlaceOfWork.NamePlaseOfWork}}</p>'
+                //}
             ]
             //onRegisterApi: function (gridApi) {
             //    $scope.gridApi = gridApi;

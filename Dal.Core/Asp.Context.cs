@@ -27,5 +27,10 @@ namespace Dal.Core
     
         public virtual DbSet<PlaceOfWork> PlaceOfWork { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Citizenship> Citizenship { get; set; }
+        public virtual DbSet<City> City { get; set; }
+        public virtual DbSet<Disability> Disability { get; set; }
+        public virtual DbSet<FamilyStatus> FamilyStatus { get; set; }
+        public virtual DbSet<Sex> Sex { get; set; }
     }
 }
