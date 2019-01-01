@@ -13,11 +13,13 @@ namespace Bll.Core.Repository
     {
         private readonly DalFactory _dalFactory;
         private IUserBll _userBll;
+        private ICityBll _cityBll;
         public BllFactory()
         {
             _dalFactory = new DalFactory(new DbFactory());
         }
 
         public IUserBll UserBll => _userBll ?? (_userBll = new UserBll(_dalFactory));
+        public ICityBll CityBll => _cityBll ?? (_cityBll = new CityBll(_dalFactory));
     }
 }

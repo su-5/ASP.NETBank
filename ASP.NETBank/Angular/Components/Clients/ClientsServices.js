@@ -13,17 +13,62 @@
             return deferred.promise;
         };
 
-        //this.add = function (country) {
-        //    var newCountry = { Name: country.Name, Description: country.Description };
-        //    var deferred = $q.defer();
-        //    $http.post("api/Countries", newCountry)
-        //        .then(function (response) {
-        //            deferred.resolve(response.data);
-        //        }).catch(function onError(response) {
-        //            deferred.reject(response.data);
-        //        });
-        //    return deferred.promise;
-        //};
+        this.getAllCity = function () {
+            var deferred = $q.defer();
+            $http.get('api/City/getAllCity')
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function onError(response) {
+                    deferred.reject(response.data);
+                });
+            return deferred.promise;
+        };
+
+        this.getAllCitizenship = function () {
+            var deferred = $q.defer();
+            $http.get('api/Clients/getAllCitizenship')
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function onError(response) {
+                    deferred.reject(response.data);
+                });
+            return deferred.promise;
+        };
+
+        this.getAllPlaceOfWork = function () {
+            var deferred = $q.defer();
+            $http.get('api/Clients/getAllPlaceOfWork')
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function onError(response) {
+                    deferred.reject(response.data);
+                });
+            return deferred.promise;
+        };
+
+        this.getAllDisability = function () {
+            var deferred = $q.defer();
+            $http.get('api/Clients/getAllDisability')
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function onError(response) {
+                    deferred.reject(response.data);
+                });
+            return deferred.promise;
+        };
+        
+
+        this.addClientDataBase = function (client) {
+           // var newCountry = { Name: country.Name, Description: country.Description };
+            var deferred = $q.defer();
+            $http.post("api/Clients/addClientDataBase", client)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function onError(response) {
+                    deferred.reject(response.data);
+                });
+            return deferred.promise;
+        };
     };
 
 

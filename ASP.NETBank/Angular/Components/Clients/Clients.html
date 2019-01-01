@@ -2,9 +2,10 @@
     <div class="form-group width-100 client-hider-style">
         <div class="pull-left client-title"> <h2>Клиенты</h2></div>
         <div style="margin-top: 4px;"> <button ng-click="addClient()" class="btn btn-success">Добавить нового клиента</button></div>
+        <div style="margin-top: 4px; margin-left: 15px;"> <button ng-click="addClient()" class="btn btn-primary" ng-disabled="selectedRow">Редактировать запись</button></div>
     </div>
 
 
-    <div ui-grid="gridClients" ui-grid-cellnav ui-grid-auto-resize ui-grid-resize-columns ui-grid-selection ng-style="{'height': mh}">
+    <div ui-grid="gridClients" ui-grid-selection ng-style="{'height': mh}">
     </div>
 </div>

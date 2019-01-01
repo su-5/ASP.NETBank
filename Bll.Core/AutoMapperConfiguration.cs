@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Bll.Core.Maper;
 
 namespace Bll.Core
@@ -15,6 +10,10 @@ namespace Bll.Core
             Mapper.Initialize(x =>
             {
                 x.AddProfile<MaperClientsUsers>();
+                x.AddProfile<MaperCity>();
+                x.AddProfile<MaperPlaceOfWork>();
+                x.AddProfile<MaperCitizenship>();
+                x.AddProfile<MaperDisability>();
             });
 
 

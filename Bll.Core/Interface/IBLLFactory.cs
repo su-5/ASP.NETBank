@@ -3,5 +3,6 @@
     public interface IBllFactory
     {
         IUserBll UserBll { get; }
+        ICityBll CityBll { get; }
     }
 }

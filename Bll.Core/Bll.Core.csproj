@@ -46,10 +46,16 @@
   <ItemGroup>
     <Compile Include="AutoMapperConfiguration.cs" />
     <Compile Include="Interface\IBLLFactory.cs" />
+    <Compile Include="Interface\ICityBll.cs" />
     <Compile Include="Interface\IUserBll.cs" />
+    <Compile Include="Maper\MaperCitizenship.cs" />
+    <Compile Include="Maper\MaperCity.cs" />
     <Compile Include="Maper\MaperClientsUsers.cs" />
+    <Compile Include="Maper\MaperDisability.cs" />
+    <Compile Include="Maper\MaperPlaceOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BllFactory.cs" />
+    <Compile Include="Repository\CityBll.cs" />
     <Compile Include="Repository\UserBll.cs" />
   </ItemGroup>
   <ItemGroup>

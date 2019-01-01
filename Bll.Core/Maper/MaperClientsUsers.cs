@@ -19,8 +19,10 @@ namespace Bll.Core.Maper
                 .ForMember(d => d.DateBirth, opt => opt.MapFrom(src => src.DateBirth.ToString("dd/MM/yyyy")))
                 .ForMember(d => d.DateIssuePassport, opt => opt.MapFrom(src => src.DateIssuePassport.ToString("dd/MM/yyyy")));
 
-            //    CreateMap<CountryDTO, Country>() DateIssuePassport
-            //        .ForMember(d => d.Id, opt => opt.MapFrom(src => src.Id));
+            CreateMap<ClientsDto, User>()
+                .ForMember(d => d.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(d => d.DateBirth, opt => opt.MapFrom(src => Convert.ToDateTime(src.DateBirth)))
+                .ForMember(d => d.DateIssuePassport, opt => opt.MapFrom(src => Convert.ToDateTime(src.DateIssuePassport)));
         }
     }
 }

@@ -39,5 +39,85 @@ namespace ASP.NETBank.Controllers
             }
 
         }
+
+        /// <summary>
+        ///справочник гражданства
+        /// </summary>
+        /// <returns></returns>
+        [Route("getAllCitizenship")]
+        [HttpGet]
+        public IHttpActionResult GetAllCitizenship()
+        {
+            try
+            {
+                var result = _bllFactory.UserBll.GetAllCitizenship();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("error", ex.Message);
+                return BadRequest(ModelState);
+            }
+
+        }
+
+        /// <summary>
+        ///справочник место работы
+        /// </summary>
+        /// <returns></returns>
+        [Route("getAllPlaceOfWork")]
+        [HttpGet]
+        public IHttpActionResult GetAllPlaceOfWork()
+        {
+            try
+            {
+                var result = _bllFactory.UserBll.GetAllPlaceOfWork();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("error", ex.Message);
+                return BadRequest(ModelState);
+            }
+
+        }
+
+        /// <summary>
+        ///справочник инвалидность
+        /// </summary>
+        /// <returns></returns>
+        [Route("getAllDisability")]
+        [HttpGet]
+        public IHttpActionResult GetAllDisability()
+        {
+            try
+            {
+                var result = _bllFactory.UserBll.GetAllDisability();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("error", ex.Message);
+                return BadRequest(ModelState);
+            }
+
+        }
+
+        [Route("addClientDataBase")]
+        [HttpPost]
+        public IHttpActionResult AddClientDataBase( ClientsDto client)
+        {
+            try
+            {
+                _bllFactory.UserBll.AddClientDataBase(client);
+                return Ok(true);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("error", ex.Message);
+                return BadRequest(ModelState);
+            }
+
+        }
     }
 }

@@ -6,5 +6,9 @@ namespace Bll.Core.Interface
     public interface IUserBll
     {
         List<ClientsDto> GetAll();
+        List<CitizenshipDto> GetAllCitizenship();
+        List<PlaceOfWorkDto> GetAllPlaceOfWork();
+        List<DisabilityDto> GetAllDisability();
+        void AddClientDataBase(ClientsDto client);
     }
 }

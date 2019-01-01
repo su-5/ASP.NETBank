@@ -71,9 +71,9 @@
           <Property Name="FamilyStatusID" Type="int" Nullable="false" />
           <Property Name="CitizenshipID" Type="int" Nullable="false" />
           <Property Name="DisabilityID" Type="int" Nullable="false" />
-          <Property Name="Retiree" Type="bit" Nullable="false" />
+          <Property Name="Retiree" Type="bit" />
           <Property Name="MonthlyIncome" Type="float" />
-          <Property Name="LiableMilitaryService" Type="bit" Nullable="false" />
+          <Property Name="LiableMilitaryService" Type="bit" />
           <Property Name="PlaceBirth" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CityFactResidenceID" Type="int" Nullable="false" />
           <Property Name="ActualAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -237,9 +237,9 @@
           <Property Name="FamilyStatusID" Type="Int32" Nullable="false" />
           <Property Name="CitizenshipID" Type="Int32" Nullable="false" />
           <Property Name="DisabilityID" Type="Int32" Nullable="false" />
-          <Property Name="Retiree" Type="Boolean" Nullable="false" />
+          <Property Name="Retiree" Type="Boolean" />
           <Property Name="MonthlyIncome" Type="Double" />
-          <Property Name="LiableMilitaryService" Type="Boolean" Nullable="false" />
+          <Property Name="LiableMilitaryService" Type="Boolean" />
           <Property Name="PlaceBirth" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CityFactResidenceID" Type="Int32" Nullable="false" />
           <Property Name="ActualAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />

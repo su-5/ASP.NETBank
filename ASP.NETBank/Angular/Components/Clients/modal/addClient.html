@@ -1,48 +1,127 @@
-﻿<div class="modal-header">
-    <h3 style="margin-top: -8px;" class="text-center">
-        Добавление нового клиента
-    </h3>
-</div>
-<div class="modal-body">
-    <form class="form-inline" name="addClientForm">
+﻿<form class="form-inline" name="addClientForm">
+    <div class="modal-header">
+        <h3 style="margin-top: -8px;" class="text-center">
+            Добавление нового клиента
+        </h3>
+    </div>
+    <div class="modal-body">
         <div class="row">
             <div class="col-lg-4">
-                <input type="text" class="form-control input-height" placeholder="Фамилия">
+                <input type="text" ng-model="client.Surname" required="required" class="form-control input-height" placeholder="Фамилия">
             </div>
             <div class="col-lg-4">
-                <input type="text" class="form-control input-height" placeholder="Имя">
+                <input type="text" ng-model="client.Name" required="required" class="form-control input-height" placeholder="Имя">
             </div>
             <div class="col-lg-4">
-                <input type="text" class="form-control input-height" placeholder="Отчество">
+                <input type="text" ng-model="client.MiddleName" required="required" class="form-control input-height" placeholder="Отчество">
             </div>
         </div>
         <div class="row interval">
             <div class="col-lg-4">
-                <input type="text" onfocus="(this.type='date')" class="form-control input-height" placeholder="Дата рождения">
+                <input type="text" ng-model="client.DateBirth" required="required" onfocus="(this.type='date')" class="form-control input-height" placeholder="Дата рождения">
             </div>
             <div class="col-lg-4">
-                <select id="" class="form-control input-height" name="" ng-model="client.Sex" required ng-options="obj.Id as obj.Name for obj in listSex">
+                <select id="" class="form-control input-height" name="" ng-model="client.SexID" required ng-options="obj.Id as obj.Name for obj in listSex">
                     <option value="">-- Выберите пол --</option>
                 </select>
             </div>
             <div class="col-lg-4">
-                <input type="text" class="form-control input-height" placeholder="Last name">
+                <input type="text" ng-model="client.PassportSeries" required="required" class="form-control input-height" placeholder="Серия паспорта">
             </div>
         </div>
         <div class="row interval">
             <div class="col-lg-4">
-                <input type="text" class="form-control input-height" placeholder="Фамилия">
+                <input type="text" ng-model="client.PassportNo" required="required" class="form-control input-height" placeholder="№ паспорта">
             </div>
             <div class="col-lg-4">
-                <input type="text" class="form-control input-height" placeholder="Имя">
+                <input type="text" ng-model="client.PassportIssuedBy" required="required" class="form-control input-height" placeholder="Кем выдан">
             </div>
             <div class="col-lg-4">
-                <input type="text" class="form-control input-height" placeholder="Отчество">
+                <input type="text" ng-model="client.DateIssuePassport" required="required" onfocus="(this.type='date')" class="form-control input-height" placeholder="Дата выдачи">
             </div>
         </div>
-    </form>
-</div>
-<div class="modal-footer">
-    <button class="btn btn-primary" type="submit" ng-click="AddNewProduct(Product,addProductForm)">Добавить</button>
-    <button class="btn btn-warning" type="button" ng-click="cancel()">Отмена</button>
-</div>
+        <div class="row interval">
+            <div class="col-lg-4">
+                <input type="text" ng-model="client.IDNumber" required="required" class="form-control input-height" placeholder="Идент. номер">
+            </div>
+            <div class="col-lg-4">
+                <input type="text" ng-model="client.PlaceBirth" required="required" class="form-control input-height" placeholder="Место рождения">
+            </div>
+            <div class="col-lg-4">
+                <select id="" class="form-control input-height" name="" ng-model="client.CityFactResidenceID" required ng-options="obj.Id as obj.Name for obj in CityRegistration">
+                    <option value="">-- Город проживания --</option>
+                </select>
+            </div>
+        </div>
+        <div class="row interval">
+            <div class="col-lg-4">
+                <input type="text" ng-model="client.ActualAddress" required="required" class="form-control input-height" placeholder="Адрес факт.проживания">
+            </div>
+            <div class="col-lg-4">
+                <input type="number" ng-model="client.PhoneHouse" class="form-control input-height" placeholder="Телефон дом">
+            </div>
+            <div class="col-lg-4">
+                <input type="number" ng-model="client.MobilePhone" class="form-control input-height" placeholder="Телефон моб">
+            </div>
+        </div>
+        <div class="row interval">
+            <div class="col-lg-4">
+                <input type="email" ng-model="client.E_mail" required="required" class="form-control input-height" placeholder="E_mail">
+            </div>
+            <div class="col-lg-4">
+                <select id="" class="form-control input-height" name="" ng-model="client.PlaceOfWorkID" ng-options="obj.Id as obj.NamePlaseOfWork for obj in PlaceOfWork">
+                    <option value="">-- Место работы --</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <input type="text" ng-model="client.Position" class="form-control input-height" placeholder="Должность">
+            </div>
+        </div>
+        <div class="row interval">
+            <div class="col-lg-4">
+                <select id="" required="" class="form-control input-height" name="" ng-model="client.CityRegistrationID" ng-options="obj.Id as obj.Name for obj in CityRegistration">
+                    <option value="">-- Город прописки --</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <input type="text" required="required" ng-model="client.PlaceResidence" class="form-control input-height" placeholder="Адрес прописки">
+            </div>
+            <div class="col-lg-4">
+                <select id="" required="" class="form-control input-height" name="" ng-model="client.FamilyStatusID" ng-options="obj.Id as obj.Name for obj in FamilyStatus">
+                    <option value="">-- Семейное положение --</option>
+                </select>
+            </div>
+        </div>
+        <div class="row interval">
+            <div class="col-lg-4">
+                <select id="" required="" class="form-control input-height" name="" ng-model="client.CitizenshipID" ng-options="obj.Id as obj.Name for obj in Citizenship">
+                    <option value="">-- Гражданство --</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <select id="" required="" class="form-control input-height" name="" ng-model="client.DisabilityID" ng-options="obj.Id as obj.Name for obj in Disability">
+                    <option value="">-- Инвалидность --</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <select id="" required="" class="form-control input-height" name="" ng-model="client.Retiree" ng-options="obj.Id as obj.Name for obj in Bool">
+                    <option value="">-- Пенсионер --</option>
+                </select>
+            </div>
+        </div>
+        <div class="row interval">
+            <div class="col-lg-4">
+                <input type="number" required="required" ng-model="client.MonthlyIncome" class="form-control input-height" placeholder="Ежемесячный доход">
+            </div>
+            <div class="col-lg-4">
+                <select id="" required="" class="form-control input-height" name="" ng-model="client.LiableMilitaryService" ng-options="obj.Id as obj.Name for obj in Bool">
+                    <option value="">-- Военнообязанный --</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="submit" ng-click="AddNewProduct(client,addClientForm)">Добавить</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Отмена</button>
+    </div>
+</form>

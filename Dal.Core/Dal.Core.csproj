@@ -96,10 +96,21 @@
     <Compile Include="FamilyStatus.cs">
       <DependentUpon>Asp.tt</DependentUpon>
     </Compile>
+    <Compile Include="GenericRepositoryModel\Interfaces\ICitizenshipDal.cs" />
+    <Compile Include="GenericRepositoryModel\Interfaces\ICityDal.cs" />
+    <Compile Include="GenericRepositoryModel\Interfaces\IDisabilityDal.cs" />
     <Compile Include="GenericRepositoryModel\Interfaces\IUserDal.cs" />
+    <Compile Include="GenericRepositoryModel\Repository\CitizenshipDal.cs" />
+    <Compile Include="GenericRepositoryModel\Repository\CityDal.cs" />
+    <Compile Include="GenericRepositoryModel\Repository\DisabilityDal.cs" />
+    <Compile Include="GenericRepositoryModel\Repository\PlaceOfWorkDal.cs" />
     <Compile Include="GenericRepository\GenericRepository.cs" />
     <Compile Include="GenericRepository\IGenericRepository.cs" />
+    <Compile Include="ModelDTO\CitizenshipDto.cs" />
+    <Compile Include="ModelDTO\CityDto.cs" />
     <Compile Include="ModelDTO\ClientsDto.cs" />
+    <Compile Include="ModelDTO\DisabilityDto.cs" />
+    <Compile Include="ModelDTO\PlaceOfWorkDto.cs" />
     <Compile Include="PlaceOfWork.cs">
       <DependentUpon>Asp.tt</DependentUpon>
     </Compile>
@@ -135,6 +146,7 @@
       <DependentUpon>Asp.edmx</DependentUpon>
     </None>
     <Compile Include="GenericRepositoryModel\Repository\UserDal.cs" />
+    <Compile Include="GenericRepositoryModel\Interfaces\IPlaceOfWorkDal.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
