@@ -50,5 +50,11 @@ namespace Bll.Core.Repository
             _dalFactory.UserDal.Add(dbObj);
 
         }
+
+        public void EditClientDataBase(ClientsDto client)
+        {
+            var dbObj = Mapper.Map<ClientsDto, User>(client);
+            _dalFactory.UserDal.UpdateVoid(dbObj,dbObj.Id);
+        }
     }
 }

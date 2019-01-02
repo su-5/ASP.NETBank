@@ -119,5 +119,22 @@ namespace ASP.NETBank.Controllers
             }
 
         }
+
+        [Route("editClientDataBase")]
+        [HttpPut]
+        public IHttpActionResult EditClientDataBase(ClientsDto client)
+        {
+            try
+            {
+                _bllFactory.UserBll.EditClientDataBase(client);
+                return Ok(true);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("error", ex.Message);
+                return BadRequest(ModelState);
+            }
+
+        }
     }
 }

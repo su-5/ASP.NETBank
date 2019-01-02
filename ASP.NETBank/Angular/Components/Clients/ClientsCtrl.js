@@ -129,8 +129,8 @@
         }
        
 
-
-        $scope.addClient = function () {
+        // flag = true (add client) and flag = false (edit client)
+        $scope.addEditClient = function (flag) { 
             $uibModal.open({
                 templateUrl: function () {
                     return 'Angular/Components/Clients/modal/addClient.html';
@@ -139,6 +139,8 @@
                 scope: $scope,
                 controller: [
                     '$rootScope', '$scope', '$uibModalInstance', function ($rootScope, $scope, $uibModalInstance) {
+                        $scope.title = "Добавление нового клиента";
+                        $scope.btnName = "Добавить";
 
                         $scope.listSex = [{ Name: "Мужской", Id: 1 }, { Name: "Женский", Id: 2 }];
                         $scope.CityRegistration = $scope.$parent.CityRegistration;
@@ -148,28 +150,52 @@
                         $scope.Bool = [{ Name: "Да", Id: true }, { Name: "Нет", Id: false }];
 
 
+                        if (!flag) {
+                            $scope.client = $scope.$parent.selectedRow;
+                            $scope.title = "Редактирование данных клиента";
+                            $scope.btnName = "Изменить";
+                        }
+
+
                         $scope.cancel = function () {
                             $uibModalInstance.dismiss({ $value: 'cancel' });
                         };
 
-                        $scope.AddNewProduct = function (client, addClientForm) {
+                        $scope.AddEditClientInfo = function (client, addClientForm) {
                             if (!addClientForm.$valid) {
                                 return;
                             }
 
-                            clientsService.addClientDataBase(client).then(function (results) {
-                                $rootScope.toaster('success', "Клиент успешно добавлен", 9000);
-                                $scope.cancel();
-                                getAllListData();
-                            },
-                                function (errorObject) {
-                                    $rootScope.toaster('error', errorObject.Message, 9000);
-                                    for (var i = 0; i < errorObject.ModelState.error.length; i++) {
-                                        $rootScope.toaster('error', errorObject.ModelState.error[i], 9000);
-                                    }
-                                }).finally(function () {
+                            if (status) {
+                                clientsService.addClientDataBase(client).then(function (results) {
+                                        $rootScope.toaster('success', "Клиент успешно добавлен", 9000);
+                                        $scope.cancel();
+                                        getAllListData();
+                                    },
+                                    function (errorObject) {
+                                        $rootScope.toaster('error', errorObject.Message, 9000);
+                                        for (var i = 0; i < errorObject.ModelState.error.length; i++) {
+                                            $rootScope.toaster('error', errorObject.ModelState.error[i], 9000);
+                                        }
+                                    }).finally(function () {
                                     $rootScope.loadingHide();
                                 });
+                            } else {
+                                clientsService.editClientDataBase(client).then(function (results) {
+                                        $rootScope.toaster('success', "Данные клиента успешно изменены", 9000);
+                                        $scope.cancel();
+                                        getAllListData();
+                                    },
+                                    function (errorObject) {
+                                        $rootScope.toaster('error', errorObject.Message, 9000);
+                                        for (var i = 0; i < errorObject.ModelState.error.length; i++) {
+                                            $rootScope.toaster('error', errorObject.ModelState.error[i], 9000);
+                                        }
+                                    }).finally(function () {
+                                    $rootScope.loadingHide();
+                                });
+                            }
+                            
                         }
                     }
                 ]

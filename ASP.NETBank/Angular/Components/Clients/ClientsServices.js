@@ -56,12 +56,23 @@
                 });
             return deferred.promise;
         };
-        
+
 
         this.addClientDataBase = function (client) {
-           // var newCountry = { Name: country.Name, Description: country.Description };
+            // var newCountry = { Name: country.Name, Description: country.Description };
             var deferred = $q.defer();
             $http.post("api/Clients/addClientDataBase", client)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function onError(response) {
+                    deferred.reject(response.data);
+                });
+            return deferred.promise;
+        };
+
+        this.editClientDataBase = function (client) {
+            var deferred = $q.defer();
+            $http.put("api/Clients/editClientDataBase", client)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function onError(response) {

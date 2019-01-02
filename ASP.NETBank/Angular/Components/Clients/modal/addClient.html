@@ -1,7 +1,7 @@
 ﻿<form class="form-inline" name="addClientForm">
     <div class="modal-header">
         <h3 style="margin-top: -8px;" class="text-center">
-            Добавление нового клиента
+            {{title}}
         </h3>
     </div>
     <div class="modal-body">
@@ -121,7 +121,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="submit" ng-click="AddNewProduct(client,addClientForm)">Добавить</button>
+        <button class="btn btn-primary" type="submit" ng-click="AddEditClientInfo(client,addClientForm)">{{btnName}}</button>
         <button class="btn btn-warning" type="button" ng-click="cancel()">Отмена</button>
     </div>
 </form>

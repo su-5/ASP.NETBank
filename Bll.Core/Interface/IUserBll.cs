@@ -10,5 +10,6 @@ namespace Bll.Core.Interface
         List<PlaceOfWorkDto> GetAllPlaceOfWork();
         List<DisabilityDto> GetAllDisability();
         void AddClientDataBase(ClientsDto client);
+        void EditClientDataBase(ClientsDto client);
     }
 }
