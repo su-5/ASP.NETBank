@@ -23,7 +23,7 @@ namespace Bll.Core.Repository
         public List<ClientsDto> GetAll()
         {
             var result = Mapper.Map<List<User>, List<ClientsDto>>(_dalFactory.UserDal.GetAll().ToList());
-            return result.OrderBy(r => r.Name).ToList();
+            return result.OrderBy(r => r.Surname).ToList();
         }
 
         public List<CitizenshipDto> GetAllCitizenship()

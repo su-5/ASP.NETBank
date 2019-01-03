@@ -14,16 +14,16 @@ namespace ASP.NETBank
     {
         protected void Application_Start()
         {
-            HttpConfiguration config = GlobalConfiguration.Configuration;
+           // HttpConfiguration config = GlobalConfiguration.Configuration;
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutoMapperConfiguration.Configure();
-            config.Formatters.JsonFormatter
-                .SerializerSettings
-                .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            //config.Formatters.JsonFormatter
+            //    .SerializerSettings
+            //    .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }
     }
 }

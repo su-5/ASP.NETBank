@@ -26,7 +26,11 @@ namespace ASP.NETBank
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling
+                = Newtonsoft.Json.ReferenceLoopHandling.Serialize;
+            config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling
+                = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+
             config.DependencyResolver = new DependenciesRegistry.UnityResolver(DependenciesRegistry.RegisterComponents());
         }
     }

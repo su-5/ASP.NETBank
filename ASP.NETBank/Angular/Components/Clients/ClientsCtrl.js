@@ -104,6 +104,41 @@
 
         };
 
+        $scope.deleteUser = function (id) {
+            bootbox.confirm({
+                message: "Вы уверены что хотите удалить эту запись?",
+                buttons: {
+                    cancel: {
+                        label: 'Да',
+                        className: 'btn-danger'
+                    },
+                    confirm: {
+                        label: 'Нет',
+                        className: 'btn-warning'
+                    }
+                },
+                callback: function (result) {
+                    if (!result) {
+                        $rootScope.loadingShow();
+                        clientsService.deleteClientDataBase(id).then(function (results) {
+                            $rootScope.toaster('success', "Клиент успешно удален", 9000);
+                            $scope.cancel();
+                            getAllListData();
+                        },
+                            function (errorObject) {
+                                $rootScope.loadingHide();
+                                $rootScope.toaster('error', errorObject.Message, 9000);
+                                for (var i = 0; i < errorObject.ModelState.error.length; i++) {
+                                    $rootScope.toaster('error', errorObject.ModelState.error[i], 9000);
+                                }
+                            }).finally(function () {
+                                //
+                            });
+                    }
+                }
+            });
+        }
+
         function getAllListData() {
             $q.all([
                 clientsService.getAll(),
@@ -112,25 +147,26 @@
                 clientsService.getAllPlaceOfWork(),
                 clientsService.getAllDisability()
             ]).then(function (results) {
-                    $scope.gridClients.data = results[0];
-                    $scope.CityRegistration = results[1];
-                    $scope.Citizenship = results[2];
-                    $scope.PlaceOfWork = results[3];
-                    $scope.Disability = results[4];
-                },
+                $scope.gridClients.data = results[0];
+                $scope.CityRegistration = results[1];
+                $scope.Citizenship = results[2];
+                $scope.PlaceOfWork = results[3];
+                $scope.Disability = results[4];
+                $scope.selectedRow = "";
+            },
                 function (errorObject) {
                     $rootScope.toaster('error', errorObject.Message, 9000);
                     for (var i = 0; i < errorObject.ModelState.error.length; i++) {
                         $rootScope.toaster('error', errorObject.ModelState.error[i], 9000);
                     }
                 }).finally(function () {
-                $rootScope.loadingHide();
-            });
+                    $rootScope.loadingHide();
+                });
         }
-       
+
 
         // flag = true (add client) and flag = false (edit client)
-        $scope.addEditClient = function (flag) { 
+        $scope.addEditClient = function (flag) {
             $uibModal.open({
                 templateUrl: function () {
                     return 'Angular/Components/Clients/modal/addClient.html';
@@ -165,37 +201,39 @@
                             if (!addClientForm.$valid) {
                                 return;
                             }
-
-                            if (status) {
+                            $rootScope.loadingShow();
+                            if (flag) {
                                 clientsService.addClientDataBase(client).then(function (results) {
-                                        $rootScope.toaster('success', "Клиент успешно добавлен", 9000);
-                                        $scope.cancel();
-                                        getAllListData();
-                                    },
+                                    $rootScope.toaster('success', "Клиент успешно добавлен", 9000);
+                                    $scope.cancel();
+                                    getAllListData();
+                                },
                                     function (errorObject) {
+                                        $rootScope.loadingHide();
                                         $rootScope.toaster('error', errorObject.Message, 9000);
                                         for (var i = 0; i < errorObject.ModelState.error.length; i++) {
                                             $rootScope.toaster('error', errorObject.ModelState.error[i], 9000);
                                         }
                                     }).finally(function () {
-                                    $rootScope.loadingHide();
-                                });
+
+                                    });
                             } else {
                                 clientsService.editClientDataBase(client).then(function (results) {
-                                        $rootScope.toaster('success', "Данные клиента успешно изменены", 9000);
-                                        $scope.cancel();
-                                        getAllListData();
-                                    },
+                                    $rootScope.toaster('success', "Данные клиента успешно изменены", 9000);
+                                    $scope.cancel();
+                                    getAllListData();
+                                },
                                     function (errorObject) {
+                                        $rootScope.loadingHide();
                                         $rootScope.toaster('error', errorObject.Message, 9000);
                                         for (var i = 0; i < errorObject.ModelState.error.length; i++) {
                                             $rootScope.toaster('error', errorObject.ModelState.error[i], 9000);
                                         }
                                     }).finally(function () {
-                                    $rootScope.loadingHide();
-                                });
+
+                                    });
                             }
-                            
+
                         }
                     }
                 ]

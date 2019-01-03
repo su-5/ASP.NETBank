@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dal.Core.ModelDTO
+﻿namespace Dal.Core.ModelDTO
 {
     public class ClientsDto
     {
@@ -35,12 +29,12 @@ namespace Dal.Core.ModelDTO
         public int CityFactResidenceID { get; set; }
         public string ActualAddress { get; set; } // Адрес факт.проживания
         public int SexID { get; set; } // пол ID
-        public virtual PlaceOfWork PlaceOfWork { get; set; }
-        public virtual Citizenship Citizenship { get; set; }
-        public virtual City City { get; set; }
-        public virtual City City1 { get; set; }
-        public virtual DisabilityDto Disability { get; set; }
-        public virtual FamilyStatus FamilyStatus { get; set; }
-        public virtual Sex Sex { get; set; } // пол
+        public PlaceOfWork PlaceOfWork { get; set; }
+        public Citizenship Citizenship { get; set; }
+        public City City { get; set; }
+        public City City1 { get; set; }
+        public DisabilityDto Disability { get; set; }
+        public FamilyStatus FamilyStatus { get; set; }
+        public Sex Sex { get; set; } // пол
     }
 }

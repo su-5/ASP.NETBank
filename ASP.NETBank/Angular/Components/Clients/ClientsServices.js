@@ -80,6 +80,17 @@
                 });
             return deferred.promise;
         };
+
+        this.deleteClientDataBase = function(id) {
+            var deferred = $q.defer();
+            $http.delete('api/Clients/deleteClientDataBase')
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function onError(response) {
+                    deferred.reject(response.data);
+                });
+            return deferred.promise;
+        }
     };
 
 
