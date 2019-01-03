@@ -41,6 +41,7 @@ namespace Dal.Core
         public int CityFactResidenceID { get; set; }
         public string ActualAddress { get; set; }
         public int SexID { get; set; }
+        public Nullable<System.DateTime> DateDelete { get; set; }
     
         public virtual PlaceOfWork PlaceOfWork { get; set; }
         public virtual Citizenship Citizenship { get; set; }

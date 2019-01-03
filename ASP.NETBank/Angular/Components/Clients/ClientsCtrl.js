@@ -122,7 +122,6 @@
                         $rootScope.loadingShow();
                         clientsService.deleteClientDataBase(id).then(function (results) {
                             $rootScope.toaster('success', "Клиент успешно удален", 9000);
-                            $scope.cancel();
                             getAllListData();
                         },
                             function (errorObject) {

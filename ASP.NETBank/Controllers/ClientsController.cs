@@ -136,5 +136,22 @@ namespace ASP.NETBank.Controllers
             }
 
         }
+
+        [Route("deleteClientDataBase")]
+        [HttpDelete]
+        public IHttpActionResult DeleteClientDataBase( int id)
+        {
+            try
+            {
+                _bllFactory.UserBll.DeleteClientDataBase(id);
+                return Ok(true);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("error", ex.Message);
+                return BadRequest(ModelState);
+            }
+
+        }
     }
 }

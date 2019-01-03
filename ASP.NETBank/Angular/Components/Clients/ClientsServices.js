@@ -83,7 +83,7 @@
 
         this.deleteClientDataBase = function(id) {
             var deferred = $q.defer();
-            $http.delete('api/Clients/deleteClientDataBase')
+            $http.delete('api/Clients/deleteClientDataBase?id=' + id)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function onError(response) {

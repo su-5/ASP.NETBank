@@ -71,13 +71,14 @@
           <Property Name="FamilyStatusID" Type="int" Nullable="false" />
           <Property Name="CitizenshipID" Type="int" Nullable="false" />
           <Property Name="DisabilityID" Type="int" Nullable="false" />
-          <Property Name="Retiree" Type="bit" />
+          <Property Name="Retiree" Type="bit" Nullable="false" />
           <Property Name="MonthlyIncome" Type="float" />
-          <Property Name="LiableMilitaryService" Type="bit" />
+          <Property Name="LiableMilitaryService" Type="bit" Nullable="false" />
           <Property Name="PlaceBirth" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CityFactResidenceID" Type="int" Nullable="false" />
           <Property Name="ActualAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SexID" Type="int" Nullable="false" />
+          <Property Name="DateDelete" Type="datetime" />
         </EntityType>
         <Association Name="FK_dbo_Citizenship_dbo_CitizenshipID">
           <End Role="Citizenship" Type="Self.Citizenship" Multiplicity="1" />
@@ -237,9 +238,9 @@
           <Property Name="FamilyStatusID" Type="Int32" Nullable="false" />
           <Property Name="CitizenshipID" Type="Int32" Nullable="false" />
           <Property Name="DisabilityID" Type="Int32" Nullable="false" />
-          <Property Name="Retiree" Type="Boolean" />
+          <Property Name="Retiree" Type="Boolean" Nullable="false" />
           <Property Name="MonthlyIncome" Type="Double" />
-          <Property Name="LiableMilitaryService" Type="Boolean" />
+          <Property Name="LiableMilitaryService" Type="Boolean" Nullable="false" />
           <Property Name="PlaceBirth" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CityFactResidenceID" Type="Int32" Nullable="false" />
           <Property Name="ActualAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -250,6 +251,7 @@
           <NavigationProperty Name="Disability" Relationship="ASP.NETBankModel.FK_dbo_Disability_dbo_DisabilityID" FromRole="User" ToRole="Disability" />
           <NavigationProperty Name="FamilyStatus" Relationship="ASP.NETBankModel.FK_dbo_FamilyStatus_dbo_FamilyStatusID" FromRole="User" ToRole="FamilyStatus" />
           <NavigationProperty Name="Sex" Relationship="ASP.NETBankModel.FK_dbo_Sex_dbo_SexID" FromRole="User" ToRole="Sex" />
+          <Property Name="DateDelete" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_dbo_Subcategories_dbo_Categories_CategoriesId">
           <End Role="PlaceOfWork" Type="Self.PlaceOfWork" Multiplicity="0..1" />
@@ -430,6 +432,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="ASP.NETBankModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="DateDelete" ColumnName="DateDelete" />
                 <ScalarProperty Name="SexID" ColumnName="SexID" />
                 <ScalarProperty Name="ActualAddress" ColumnName="ActualAddress" />
                 <ScalarProperty Name="CityFactResidenceID" ColumnName="CityFactResidenceID" />

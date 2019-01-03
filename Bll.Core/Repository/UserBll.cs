@@ -22,7 +22,7 @@ namespace Bll.Core.Repository
 
         public List<ClientsDto> GetAll()
         {
-            var result = Mapper.Map<List<User>, List<ClientsDto>>(_dalFactory.UserDal.GetAll().ToList());
+            var result = Mapper.Map<List<User>, List<ClientsDto>>(_dalFactory.UserDal.GetAll().Where(w=>w.DateDelete == null).ToList());
             return result.OrderBy(r => r.Surname).ToList();
         }
 
@@ -55,6 +55,13 @@ namespace Bll.Core.Repository
         {
             var dbObj = Mapper.Map<ClientsDto, User>(client);
             _dalFactory.UserDal.UpdateVoid(dbObj,dbObj.Id);
+        }
+
+        public void DeleteClientDataBase(int id)
+        {
+            var entity = _dalFactory.UserDal.GetById(id);
+            entity.DateDelete = DateTime.Now;
+            _dalFactory.UserDal.UpdateVoid(entity,entity.Id);
         }
     }
 }

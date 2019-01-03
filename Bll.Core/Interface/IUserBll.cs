@@ -11,5 +11,6 @@ namespace Bll.Core.Interface
         List<DisabilityDto> GetAllDisability();
         void AddClientDataBase(ClientsDto client);
         void EditClientDataBase(ClientsDto client);
+        void DeleteClientDataBase(int id);
     }
 }
