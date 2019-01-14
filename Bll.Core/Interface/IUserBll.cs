@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Dal.Core;
 using Dal.Core.ModelDTO;
 
 namespace Bll.Core.Interface
@@ -12,5 +13,6 @@ namespace Bll.Core.Interface
         void AddClientDataBase(ClientsDto client);
         void EditClientDataBase(ClientsDto client);
         void DeleteClientDataBase(int id);
+        List<UserDto> GetAllUsers();
     }
 }

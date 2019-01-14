@@ -81,7 +81,7 @@
             return deferred.promise;
         };
 
-        this.deleteClientDataBase = function(id) {
+        this.deleteClientDataBase = function (id) {
             var deferred = $q.defer();
             $http.delete('api/Clients/deleteClientDataBase?id=' + id)
                 .then(function (response) {
@@ -91,7 +91,18 @@
                 });
             return deferred.promise;
         }
-    };
+
+        this.getAllUsers = function () {
+            var deferred = $q.defer();
+            $http.get('api/Clients/getAllUsers')
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function onError(response) {
+                    deferred.reject(response.data);
+                });
+            return deferred.promise;
+        }
+    }
 
 
     angular

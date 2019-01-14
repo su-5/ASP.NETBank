@@ -17,6 +17,12 @@
                 controller: "clientsController"
             });
 
+            $stateProvider.state("Deposits", {
+                url: "/Deposits",
+                templateUrl: "Angular/Components/DepositOperations/DepositOperations.html",
+                controller: "depositController"
+            });
+
             $stateProvider.state("Bankomat", {
                 url: "/Bankomat",
                 templateUrl: "Angular/Components/Bankomat/Bankomat.html",

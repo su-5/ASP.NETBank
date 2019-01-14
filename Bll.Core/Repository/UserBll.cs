@@ -14,6 +14,7 @@ namespace Bll.Core.Repository
   public  class UserBll : IUserBll
     {
         private readonly DalFactory _dalFactory;
+        AspNetBankEntities db = new AspNetBankEntities();
 
         public UserBll(DalFactory dalFactory)
         {
@@ -62,6 +63,13 @@ namespace Bll.Core.Repository
             var entity = _dalFactory.UserDal.GetById(id);
             entity.DateDelete = DateTime.Now;
             _dalFactory.UserDal.UpdateVoid(entity,entity.Id);
+        }
+
+        public List<UserDto> GetAllUsers()
+        {
+            List<User> allList = db.User.OrderBy(e => e.MiddleName).ToList();
+            var result = Mapper.Map<List<User>, List<UserDto>>(allList);
+            return result;
         }
     }
 }

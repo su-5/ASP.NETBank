@@ -1,0 +1,64 @@
+﻿<div class="form-group width-100 client-hider-style">
+    <div class="pull-left client-title"> <h2>Открытие депозита</h2></div>
+    <div style="margin-top: 4px;"> <button ng-click="" class="btn btn-success">Добавить нового клиента</button></div>
+    <div style="margin-top: 4px; margin-left: 15px;"> <button ng-click="" class="btn btn-primary" ng-disabled="!selectedRow">Редактировать запись</button></div>
+</div>
+<br/>
+<form role="form" class="form-inline">
+    <div class="border-form">
+        <div class="row interval">
+            <div align="center" class="col-lg-12">
+                <label>Депозит: </label>
+                <select id="" style="max-width: 712px;" class="form-control input-height" name="" ng-model="deposit.DepositId" required ng-options="obj.Id as obj.Name for obj in deposits">
+                    <option value="">-- Выберите депозит --</option>
+                </select>
+            </div>
+        </div>
+        <div class="row interval">
+            <div align="center" class="col-lg-12">
+                <label>Клиент: </label>
+                <select id="" style="max-width: 720px;" class="form-control input-height" name="" ng-model="deposit.ClientId" required ng-options="obj.Id as obj.Surname + ' ' + obj.Name + ' '+ obj.MiddleName + ' (  дата рождения - ' + obj.DateBirth + ')' for obj in clients">
+                    <option value="">-- Выберите клиента --</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row interval">
+            <div align="right" class="col-lg-6">
+                <label>№ договора: </label>
+                <input type="text" class="form-control input-height" />
+            </div>
+            <div align="left" class="col-lg-6">
+                <label>Вид валюты: </label>
+                <select id="" class="form-control input-height" name="" ng-model="deposit.ClientId" required ng-options="obj.Id as obj.Surname + ' ' + obj.Name + ' '+ obj.MiddleName + ' (  дата рождения - ' + obj.DateBirth + ')' for obj in clients">
+                    <option value="">-- Выберите валюту --</option>
+                </select>
+            </div>
+        </div>
+        <div align="center" class="row interval">
+            <div><label>Дата начала и окончания депозитной программы :</label></div>
+            <div align="right" class="col-lg-6">
+                <label>C&nbsp;</label>
+                <input type="text" onfocus="(this.type = 'date')" class="form-control input-height" placeholder="Дата начала" />
+            </div>
+            <div align="left" class="col-lg-6">
+                <label>по &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="text" onfocus="(this.type = 'date')" class="form-control input-height" placeholder="Дата окончания" />
+            </div>
+        </div>
+        <div align="center" class="row interval">
+            <div class="col-lg-4">
+                <label>Срок</label>
+                <input type="text" onfocus="(this.type = 'date')" class="form-control input-height" placeholder="Срок договора" />
+            </div>
+            <div class="col-lg-4">
+                <label>Сумма</label>
+                <input type="number" class="form-control input-height" placeholder="Сумма вклада" />
+            </div>
+            <div class="col-lg-4">
+                <label>%</label>
+                <input type="number" class="form-control input-height" placeholder="Процент по вкладу" />
+            </div>
+        </div>
+    </div>
+</form>

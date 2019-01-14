@@ -245,6 +245,8 @@
     <Content Include="Angular\Components\Clients\ClientsCtrl.js" />
     <Content Include="Angular\Components\Clients\ClientsServices.js" />
     <Content Include="Angular\Components\Clients\modal\addClient.html" />
+    <Content Include="Angular\Components\DepositOperations\DepositOperations.html" />
+    <Content Include="Angular\Components\DepositOperations\DepositOperationsCtrl.js" />
     <Content Include="Angular\Components\Index\IndexCtrl.js" />
     <Content Include="Angular\inputDirectives\cellEditGridDirective.js" />
     <Content Include="Angular\inputDirectives\cyrilikInputDerective.js" />
@@ -1303,6 +1305,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

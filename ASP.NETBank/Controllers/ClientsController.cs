@@ -153,5 +153,22 @@ namespace ASP.NETBank.Controllers
             }
 
         }
+
+        [Route("getAllUsers")]
+        [HttpGet]
+        public IHttpActionResult GetAllUsers()
+        {
+            try
+            {
+              var result = _bllFactory.UserBll.GetAllUsers();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("error", ex.Message);
+                return BadRequest(ModelState);
+            }
+
+        }
     }
 }
