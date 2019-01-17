@@ -12,18 +12,11 @@ namespace Dal.Core
     using System;
     using System.Collections.Generic;
     
-    public partial class FamilyStatus
+    public partial class BankDevelopmentAccount
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public FamilyStatus()
-        {
-            this.User = new HashSet<User>();
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
+        public decimal Summ { get; set; }
+        public System.DateTime DateUpdate { get; set; }
+        public Nullable<System.DateTime> DateDelete { get; set; }
     }
 }

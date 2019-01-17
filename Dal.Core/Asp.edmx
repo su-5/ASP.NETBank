@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище ASP.NETBankModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BankDevelopmentAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Summ" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="DateUpdate" Type="datetime" Nullable="false" />
+          <Property Name="DateDelete" Type="datetime" />
+        </EntityType>
         <EntityType Name="Characteristic">
           <Key>
             <PropertyRef Name="Id" />
@@ -276,6 +285,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище ASPNETBankModelContainer">
+          <EntitySet Name="BankDevelopmentAccount" EntityType="Self.BankDevelopmentAccount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Characteristic" EntityType="Self.Characteristic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChartAccounts" EntityType="Self.ChartAccounts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Citizenship" EntityType="Self.Citizenship" Schema="dbo" store:Type="Tables" />
@@ -463,6 +473,7 @@
             <End Role="User" EntitySet="User" />
             <End Role="Transaction" EntitySet="Transaction" />
           </AssociationSet>
+          <EntitySet Name="BankDevelopmentAccount" EntityType="ASP.NETBankModel.BankDevelopmentAccount" />
           </EntityContainer>
         <EntityType Name="Citizenship">
           <Key>
@@ -697,6 +708,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="BankDevelopmentAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Summ" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="DateUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateDelete" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -837,6 +857,16 @@
                 <ScalarProperty Name="Dedet" ColumnName="Dedet" />
                 <ScalarProperty Name="ChartAccountsId" ColumnName="ChartAccountsId" />
                 <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BankDevelopmentAccount">
+            <EntityTypeMapping TypeName="ASP.NETBankModel.BankDevelopmentAccount">
+              <MappingFragment StoreEntitySet="BankDevelopmentAccount">
+                <ScalarProperty Name="DateDelete" ColumnName="DateDelete" />
+                <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

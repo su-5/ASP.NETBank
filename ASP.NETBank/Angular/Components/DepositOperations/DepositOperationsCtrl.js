@@ -46,11 +46,11 @@
             if (!depositForm.$valid) {
                 return;
             }
-           // $rootScope.loadingShow();
+            $rootScope.loadingShow();
             $q.all([
                 clientsService.addDeposit(deposit)
             ]).then(function (results) {
-                   // $scope.clients = results[0];
+                $rootScope.toaster('success',"Счета успешно добавлены" , 5000);
                 },
                 function (errorObject) {
                     $rootScope.toaster('error', errorObject.Message, 9000);

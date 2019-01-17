@@ -80,6 +80,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Asp.edmx</DependentUpon>
     </Compile>
+    <Compile Include="BankDevelopmentAccount.cs">
+      <DependentUpon>Asp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Characteristic.cs">
       <DependentUpon>Asp.tt</DependentUpon>
     </Compile>

@@ -29,6 +29,7 @@
         <AssociationConnector Association="ASP.NETBankModel.FK_dboCurrensy_dbo_Transaction_CurrensyId" />
         <AssociationConnector Association="ASP.NETBankModel.FK_dbo_Deposit_dbo_Transaction_DepositId" />
         <AssociationConnector Association="ASP.NETBankModel.FK_dboUser_dbo_Transaction_UserId" />
+        <EntityTypeShape EntityType="ASP.NETBankModel.BankDevelopmentAccount" Width="1.5" PointX="7.25" PointY="0.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
