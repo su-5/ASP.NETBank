@@ -23,8 +23,45 @@
             {
                 Id: 1,
                 Name: ' "Выше.net" Ставки до  - 8.0 % годовых (отзывной)'
-            }, { Id: 2, Name: '"Выше.net (безотзывный)" Ставка - 12,5% годовых' }
+            },
+            {
+                 Id: 2, Name: '"Выше.net (безотзывный)" Ставка - 12,5% годовых'
+            }
         ];
+
+        $scope.currensys = [
+            {
+                Id: 1,
+                Name: 'BYN'
+            },
+            {
+                Id: 2, Name: 'USD'
+            }, {
+                Id: 3, Name: 'EUR'
+            }];
+
+
+        $scope.addDeposit = function (deposit, depositForm)
+        {
+            if (!depositForm.$valid) {
+                return;
+            }
+           // $rootScope.loadingShow();
+            $q.all([
+                clientsService.addDeposit(deposit)
+            ]).then(function (results) {
+                   // $scope.clients = results[0];
+                },
+                function (errorObject) {
+                    $rootScope.toaster('error', errorObject.Message, 9000);
+                    for (var i = 0; i < errorObject.ModelState.error.length; i++) {
+                        $rootScope.toaster('error', errorObject.ModelState.error[i], 9000);
+                    }
+                }).finally(function () {
+                $rootScope.loadingHide();
+            });
+
+        }
     };
 
     // register your controller into a dependent module 

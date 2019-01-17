@@ -170,5 +170,22 @@ namespace ASP.NETBank.Controllers
             }
 
         }
+
+        [Route("addDeposit")]
+        [HttpPost]
+        public IHttpActionResult AddDeposit(DepositDto deposit)
+        {
+            try
+            {
+                _bllFactory.UserBll.AddDeposit(deposit);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("error", ex.Message);
+                return BadRequest(ModelState);
+            }
+
+        }
     }
 }

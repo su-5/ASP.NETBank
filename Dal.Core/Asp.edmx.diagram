@@ -19,6 +19,16 @@
         <AssociationConnector Association="ASP.NETBankModel.FK_dbo_Disability_dbo_DisabilityID" />
         <AssociationConnector Association="ASP.NETBankModel.FK_dbo_FamilyStatus_dbo_FamilyStatusID" />
         <AssociationConnector Association="ASP.NETBankModel.FK_dbo_Sex_dbo_SexID" />
+        <EntityTypeShape EntityType="ASP.NETBankModel.Characteristic" Width="1.5" PointX="7.375" PointY="3.875" />
+        <EntityTypeShape EntityType="ASP.NETBankModel.ChartAccounts" Width="1.5" PointX="9.625" PointY="3.75" />
+        <EntityTypeShape EntityType="ASP.NETBankModel.Currensy" Width="1.5" PointX="9.625" PointY="0.75" />
+        <EntityTypeShape EntityType="ASP.NETBankModel.Deposit" Width="1.5" PointX="9.625" PointY="7.25" />
+        <AssociationConnector Association="ASP.NETBankModel.FK_dbo_Characteristic_dbo_ChartAccounts_CharacteristicAccountId" />
+        <EntityTypeShape EntityType="ASP.NETBankModel.Transaction" Width="1.5" PointX="11.875" PointY="2.625" />
+        <AssociationConnector Association="ASP.NETBankModel.FK_dbo_ChartAccounts_dbo_Transaction_ChartAccountsId" />
+        <AssociationConnector Association="ASP.NETBankModel.FK_dboCurrensy_dbo_Transaction_CurrensyId" />
+        <AssociationConnector Association="ASP.NETBankModel.FK_dbo_Deposit_dbo_Transaction_DepositId" />
+        <AssociationConnector Association="ASP.NETBankModel.FK_dboUser_dbo_Transaction_UserId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

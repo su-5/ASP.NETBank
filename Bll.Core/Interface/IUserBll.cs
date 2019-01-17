@@ -14,5 +14,6 @@ namespace Bll.Core.Interface
         void EditClientDataBase(ClientsDto client);
         void DeleteClientDataBase(int id);
         List<UserDto> GetAllUsers();
+        void AddDeposit(DepositDto deposit);
     }
 }

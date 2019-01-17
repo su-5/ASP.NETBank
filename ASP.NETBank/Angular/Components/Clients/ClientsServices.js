@@ -102,6 +102,17 @@
                 });
             return deferred.promise;
         }
+
+        this.addDeposit = function(deposit) {
+            var deferred = $q.defer();
+            $http.post('api/Clients/addDeposit',deposit)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function onError(response) {
+                    deferred.reject(response.data);
+                });
+            return deferred.promise;
+        }
     }
 
 

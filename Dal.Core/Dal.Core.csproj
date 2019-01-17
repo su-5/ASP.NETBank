@@ -80,16 +80,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Asp.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Characteristic.cs">
+      <DependentUpon>Asp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChartAccounts.cs">
+      <DependentUpon>Asp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Citizenship.cs">
       <DependentUpon>Asp.tt</DependentUpon>
     </Compile>
     <Compile Include="City.cs">
       <DependentUpon>Asp.tt</DependentUpon>
     </Compile>
+    <Compile Include="Currensy.cs">
+      <DependentUpon>Asp.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL_Core\DalFactory.cs" />
     <Compile Include="DAL_Core\DBFactory.cs" />
     <Compile Include="DAL_Core\IDalFantory.cs" />
     <Compile Include="DAL_Core\IDbFactory.cs" />
+    <Compile Include="Deposit.cs">
+      <DependentUpon>Asp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Disability.cs">
       <DependentUpon>Asp.tt</DependentUpon>
     </Compile>
@@ -109,6 +121,7 @@
     <Compile Include="ModelDTO\CitizenshipDto.cs" />
     <Compile Include="ModelDTO\CityDto.cs" />
     <Compile Include="ModelDTO\ClientsDto.cs" />
+    <Compile Include="ModelDTO\DepositDto.cs" />
     <Compile Include="ModelDTO\DisabilityDto.cs" />
     <Compile Include="ModelDTO\PlaceOfWorkDto.cs" />
     <Compile Include="ModelDTO\UserDto.cs" />
@@ -117,6 +130,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sex.cs">
+      <DependentUpon>Asp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction.cs">
       <DependentUpon>Asp.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
