@@ -16,5 +16,6 @@ namespace Dal.Core.ModelDTO
         public double Amount { get; set; }
         public int InterestDeposit { get; set; }
         public string Contract { get; set; }
+        public int AccountId { get; set; }
     }
 }

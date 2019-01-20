@@ -113,6 +113,47 @@
                 });
             return deferred.promise;
         }
+
+        this.getSummBank = function() {
+            var deferred = $q.defer();
+            $http.get('api/Clients/getSummBank')
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function onError(response) {
+                    deferred.reject(response.data);
+                });
+            return deferred.promise;
+        }
+
+        this.getDepositsUser = function(id) {
+            var deferred = $q.defer();
+            $http.get('api/Clients/getDepositsUser?id=' + id)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function onError(response) {
+                    deferred.reject(response.data);
+                });
+            return deferred.promise;
+        }
+
+        this.getreport = function(deposit) {
+            var deferred = $q.defer();
+            $http({
+                url: 'api/Clients/ReportDeposit', method: "POST", data: {
+                    ClientId: deposit.ClientId,
+                    AccountId: deposit.AccountId,
+                    DateBegin: deposit.DateBegin,
+                    DateEnd: deposit.DateEnd
+                }, responseType: 'arraybuffer'
+            })
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function onError(response) {
+                    deferred.reject(response.data);
+                });
+            return deferred.promise;
+        }
+
     }
 
 

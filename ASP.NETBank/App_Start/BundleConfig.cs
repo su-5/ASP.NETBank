@@ -26,6 +26,7 @@ namespace ASP.NETBank
                 "~/Scripts/angular-ui/ui-bootstrap",
                 "~/Scripts/angular-ui.js",
                 "~/Scripts/bootbox.js",
+                "~/Scripts/FileSaver.js",
                 ////  "~/Scripts/tr/angular.integralui.accordion.min.js",
                 //"~/Scripts/tr/angular.integralui.min.js",
                 //// "~/Scripts/tr/angular.integralui.checkbox.min.js",

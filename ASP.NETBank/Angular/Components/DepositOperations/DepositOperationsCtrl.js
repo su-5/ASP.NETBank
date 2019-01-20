@@ -5,19 +5,23 @@
     var depositController = function ($scope, $rootScope, clientsService, $q) {
         $rootScope.loadingShow();
 
-        $q.all([
-            clientsService.getAllUsers(),
-        ]).then(function (results) {
-            $scope.clients = results[0];
-            },
-            function (errorObject) {
-                $rootScope.toaster('error', errorObject.Message, 9000);
-                for (var i = 0; i < errorObject.ModelState.error.length; i++) {
-                    $rootScope.toaster('error', errorObject.ModelState.error[i], 9000);
-                }
-            }).finally(function () {
-            $rootScope.loadingHide();
-        });
+        function getAllData() {
+            $q.all([
+                clientsService.getAllUsers(),
+                clientsService.getSummBank()
+            ]).then(function(results) {
+                    $scope.clients = results[0];
+                    $scope.getSummBank = results[1];
+                },
+                function(errorObject) {
+                    $rootScope.toaster('error', errorObject.Message, 9000);
+                    for (var i = 0; i < errorObject.ModelState.error.length; i++) {
+                        $rootScope.toaster('error', errorObject.ModelState.error[i], 9000);
+                    }
+                }).finally(function() {
+                $rootScope.loadingHide();
+            });
+        }
 
         $scope.deposits = [
             {
@@ -50,8 +54,10 @@
             $q.all([
                 clientsService.addDeposit(deposit)
             ]).then(function (results) {
-                $rootScope.toaster('success',"Счета успешно добавлены" , 5000);
-                },
+                $rootScope.toaster('success', "Счета успешно добавлены", 5000);
+                getAllData();
+                $scope.deposit = {};
+            },
                 function (errorObject) {
                     $rootScope.toaster('error', errorObject.Message, 9000);
                     for (var i = 0; i < errorObject.ModelState.error.length; i++) {
@@ -62,6 +68,8 @@
             });
 
         }
+
+        getAllData();
     };
 
     // register your controller into a dependent module 

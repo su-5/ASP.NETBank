@@ -15,5 +15,8 @@ namespace Bll.Core.Interface
         void DeleteClientDataBase(int id);
         List<UserDto> GetAllUsers();
         void AddDeposit(DepositDto deposit);
+        decimal? GetSummBank();
+        List<TransactDto> GetDepositsUser(int id);
+        byte[] ReportDeposit(DepositDto depositDto);
     }
 }

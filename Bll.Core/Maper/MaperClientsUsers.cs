@@ -29,6 +29,10 @@ namespace Bll.Core.Maper
                 .ForMember(d => d.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(d => d.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(d => d.DateBirth, opt => opt.MapFrom(src => src.DateBirth.ToString("dd/MM/yyyy")));
+
+            CreateMap<Transaction, TransactDto>()
+                .ForMember(d => d.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(d => d.DateBegin, opt => opt.MapFrom(src => src.DateBegin.ToString("dd/MM/yyyy")));
         }
     }
 }

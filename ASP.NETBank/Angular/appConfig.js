@@ -29,6 +29,12 @@
                 controller: "bankomatController"
             });
 
+            $stateProvider.state("Reports", {
+                url: "/depositReports",
+                templateUrl: "Angular/Components/depositReports/depositReports.html",
+                controller: "depositReportsController"
+            });
+
             $urlRouterProvider.otherwise("/Index");
         }]);
 })();

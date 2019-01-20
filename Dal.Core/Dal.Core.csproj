@@ -127,6 +127,7 @@
     <Compile Include="ModelDTO\DepositDto.cs" />
     <Compile Include="ModelDTO\DisabilityDto.cs" />
     <Compile Include="ModelDTO\PlaceOfWorkDto.cs" />
+    <Compile Include="ModelDTO\TransactDto.cs" />
     <Compile Include="ModelDTO\UserDto.cs" />
     <Compile Include="PlaceOfWork.cs">
       <DependentUpon>Asp.tt</DependentUpon>

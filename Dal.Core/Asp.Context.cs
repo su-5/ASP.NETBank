@@ -36,7 +36,7 @@ namespace Dal.Core
         public virtual DbSet<ChartAccounts> ChartAccounts { get; set; }
         public virtual DbSet<Currensy> Currensy { get; set; }
         public virtual DbSet<Deposit> Deposit { get; set; }
-        public virtual DbSet<Transaction> Transaction { get; set; }
         public virtual DbSet<BankDevelopmentAccount> BankDevelopmentAccount { get; set; }
+        public virtual DbSet<Transaction> Transactions { get; set; }
     }
 }

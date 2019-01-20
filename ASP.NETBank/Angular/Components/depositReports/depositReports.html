@@ -1,0 +1,46 @@
+﻿
+<form role="form" class="form-inline" name="depositReportForm">
+    <div class="form-group width-100 client-hider-style">
+        <div class="pull-left client-title"> <h2>Отчеты по депозитам</h2></div>
+       <div><label style="padding-left: 43px;padding-top: 13px;">Капитал банка составляет: {{getSummBank}}</label></div>
+        <!--<div style="margin-top: 4px; margin-left: 15px;"> <button ng-click="" class="btn btn-primary" ng-disabled="!selectedRow">Редактировать запись</button></div>-->
+    </div>
+    <br /> <br />
+           <div class="border-form">
+               <div class="row interval">
+                   <div align="center" class="col-lg-12">
+                       <label>Клиент: </label>
+                       <select id="" required style="max-width: 720px;" class="form-control input-height" name="" ng-model="deposit.ClientId" required ng-options="obj.Id as obj.Surname + ' ' + obj.Name + ' '+ obj.MiddleName + ' (  дата рождения - ' + obj.DateBirth + ')' for obj in clients">
+                           <option value="">-- Выберите клиента --</option>
+                       </select>
+                   </div>
+               </div>
+               <div class="row interval">
+                   <div align="center" class="col-lg-12">
+                       <label>Депозиты клиента (счета): </label>
+                       <select id="" required style="max-width: 712px;" ng-disabled="!deposit.ClientId" class="form-control input-height" name="" ng-model="deposit.AccountId" required ng-options="obj.Id as obj.Account + '  (договор №:' + obj.Contract + ')  ('+ obj.InterestDeposit + '%)  (счет открыт с ' + obj.DateBegin + ')'  for obj in Accounts">
+                           <option value="">-- Выберите счет --</option>
+                       </select>
+                   </div>
+               </div>
+               <div align="center" class="row interval">
+                   <div>
+                       <label>Период :</label>
+                   </div>
+                   <div align="right" class="col-lg-6">
+                       <label>C&nbsp;</label>
+                       <input type="text" required onfocus="(this.type = 'date')" ng-model="deposit.DateBegin" class="form-control input-height" placeholder="Дата начала" />
+                   </div>
+                   <div align="left" class="col-lg-6">
+                       <label>по &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                       <input type="text" required onfocus="(this.type = 'date')" ng-model="deposit.DateEnd" class="form-control input-height" placeholder="Дата окончания" />
+                   </div>
+               </div>
+               <br /> <br />
+               <div align="center">
+                   <button type="submit" ng-click="report(deposit,depositReportForm)" class="btn btn-success">Сформировать отчет</button>
+               </div>
+
+           </div>
+   
+</form>

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Http;
+using Bll.Core.Ex;
 using Bll.Core.Interface;
 using Dal.Core.ModelDTO;
 
@@ -184,6 +186,68 @@ namespace ASP.NETBank.Controllers
             {
                 ModelState.AddModelError("error", ex.Message);
                 return BadRequest(ModelState);
+            }
+
+        }
+
+        [Route("getSummBank")]
+        [HttpGet]
+        public IHttpActionResult GetSummBank()
+        {
+            try
+            {
+                var result = _bllFactory.UserBll.GetSummBank();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("error", ex.Message);
+                return BadRequest(ModelState);
+            }
+
+        }
+
+        [Route("getDepositsUser")]
+        [HttpGet]
+        public IHttpActionResult GetDepositsUser(int id)
+        {
+            try
+            {
+                List<TransactDto> result = _bllFactory.UserBll.GetDepositsUser(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("error", ex.Message);
+                return BadRequest(ModelState);
+            }
+
+        }
+
+        [Route("ReportDeposit")]
+        [HttpPost]
+        public HttpResponseMessage ReportDeposit(DepositDto deposit)
+        {
+            try
+            {
+                var namefile = "Отчет о депозите";
+                byte[] generateExcelresult = _bllFactory.UserBll.ReportDeposit(deposit);
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+                response.Content = new ByteArrayContent(generateExcelresult);
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment") { FileName = namefile + ".xls" };
+                return response;
+            }
+
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("error", ex.Message);
+                throw new ValidationException(ex.Message,"");
+            }
+            finally
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
 
         }

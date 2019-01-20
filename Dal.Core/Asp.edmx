@@ -10,7 +10,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Summ" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Summ" Type="decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="DateUpdate" Type="datetime" Nullable="false" />
           <Property Name="DateDelete" Type="datetime" />
         </EntityType>
@@ -106,6 +106,8 @@
           <Property Name="DateEnd" Type="datetime" Nullable="false" />
           <Property Name="DateCreat" Type="datetime" Nullable="false" />
           <Property Name="InterestDeposit" Type="int" Nullable="false" />
+          <Property Name="dateUpdate" Type="datetime" />
+          <Property Name="status" Type="nchar" MaxLength="2" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -398,7 +400,7 @@
           <NavigationProperty Name="FamilyStatus" Relationship="ASP.NETBankModel.FK_dbo_FamilyStatus_dbo_FamilyStatusID" FromRole="User" ToRole="FamilyStatus" />
           <NavigationProperty Name="Sex" Relationship="ASP.NETBankModel.FK_dbo_Sex_dbo_SexID" FromRole="User" ToRole="Sex" />
           <Property Name="DateDelete" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Transaction" Relationship="ASP.NETBankModel.FK_dboUser_dbo_Transaction_UserId" FromRole="User" ToRole="Transaction" />
+          <NavigationProperty Name="Transactions" Relationship="ASP.NETBankModel.FK_dboUser_dbo_Transaction_UserId" FromRole="User" ToRole="Transaction" />
         </EntityType>
         <Association Name="FK_dbo_Subcategories_dbo_Categories_CategoriesId">
           <End Role="PlaceOfWork" Type="Self.PlaceOfWork" Multiplicity="0..1" />
@@ -456,24 +458,24 @@
             <End Role="Characteristic" EntitySet="Characteristic" />
             <End Role="ChartAccounts" EntitySet="ChartAccounts" />
           </AssociationSet>
-          <EntitySet Name="Transaction" EntityType="ASP.NETBankModel.Transaction" />
+          <EntitySet Name="BankDevelopmentAccount" EntityType="ASP.NETBankModel.BankDevelopmentAccount" />
+          <EntitySet Name="Transactions" EntityType="ASP.NETBankModel.Transaction" />
           <AssociationSet Name="FK_dbo_ChartAccounts_dbo_Transaction_ChartAccountsId" Association="ASP.NETBankModel.FK_dbo_ChartAccounts_dbo_Transaction_ChartAccountsId">
             <End Role="ChartAccounts" EntitySet="ChartAccounts" />
-            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
           <AssociationSet Name="FK_dboCurrensy_dbo_Transaction_CurrensyId" Association="ASP.NETBankModel.FK_dboCurrensy_dbo_Transaction_CurrensyId">
             <End Role="Currensy" EntitySet="Currensy" />
-            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_Deposit_dbo_Transaction_DepositId" Association="ASP.NETBankModel.FK_dbo_Deposit_dbo_Transaction_DepositId">
             <End Role="Deposit" EntitySet="Deposit" />
-            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
           <AssociationSet Name="FK_dboUser_dbo_Transaction_UserId" Association="ASP.NETBankModel.FK_dboUser_dbo_Transaction_UserId">
             <End Role="User" EntitySet="User" />
-            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
-          <EntitySet Name="BankDevelopmentAccount" EntityType="ASP.NETBankModel.BankDevelopmentAccount" />
           </EntityContainer>
         <EntityType Name="Citizenship">
           <Key>
@@ -606,7 +608,7 @@
           <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CharacteristicAccountId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Characteristic" Relationship="ASP.NETBankModel.FK_dbo_Characteristic_dbo_ChartAccounts_CharacteristicAccountId" FromRole="ChartAccounts" ToRole="Characteristic" />
-          <NavigationProperty Name="Transaction" Relationship="ASP.NETBankModel.FK_dbo_ChartAccounts_dbo_Transaction_ChartAccountsId" FromRole="ChartAccounts" ToRole="Transaction" />
+          <NavigationProperty Name="Transactions" Relationship="ASP.NETBankModel.FK_dbo_ChartAccounts_dbo_Transaction_ChartAccountsId" FromRole="ChartAccounts" ToRole="Transaction" />
         </EntityType>
         <EntityType Name="Currensy">
           <Key>
@@ -615,7 +617,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LetterCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Transaction" Relationship="ASP.NETBankModel.FK_dboCurrensy_dbo_Transaction_CurrensyId" FromRole="Currensy" ToRole="Transaction" />
+          <NavigationProperty Name="Transactions" Relationship="ASP.NETBankModel.FK_dboCurrensy_dbo_Transaction_CurrensyId" FromRole="Currensy" ToRole="Transaction" />
         </EntityType>
         <EntityType Name="Deposit">
           <Key>
@@ -623,7 +625,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Transaction" Relationship="ASP.NETBankModel.FK_dbo_Deposit_dbo_Transaction_DepositId" FromRole="Deposit" ToRole="Transaction" />
+          <NavigationProperty Name="Transactions" Relationship="ASP.NETBankModel.FK_dbo_Deposit_dbo_Transaction_DepositId" FromRole="Deposit" ToRole="Transaction" />
         </EntityType>
         <Association Name="FK_dbo_Characteristic_dbo_ChartAccounts_CharacteristicAccountId">
           <End Type="ASP.NETBankModel.Characteristic" Role="Characteristic" Multiplicity="1" />
@@ -637,6 +639,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="BankDevelopmentAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Summ" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="DateUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateDelete" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="Transaction">
           <Key>
             <PropertyRef Name="Id" />
@@ -655,7 +666,9 @@
           <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DateCreat" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="InterestDeposit" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ChartAccounts" Relationship="ASP.NETBankModel.FK_dbo_ChartAccounts_dbo_Transaction_ChartAccountsId" FromRole="Transaction" ToRole="ChartAccounts" />
+          <Property Name="dateUpdate" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ChartAccount" Relationship="ASP.NETBankModel.FK_dbo_ChartAccounts_dbo_Transaction_ChartAccountsId" FromRole="Transaction" ToRole="ChartAccounts" />
           <NavigationProperty Name="Currensy" Relationship="ASP.NETBankModel.FK_dboCurrensy_dbo_Transaction_CurrensyId" FromRole="Transaction" ToRole="Currensy" />
           <NavigationProperty Name="Deposit" Relationship="ASP.NETBankModel.FK_dbo_Deposit_dbo_Transaction_DepositId" FromRole="Transaction" ToRole="Deposit" />
           <NavigationProperty Name="User" Relationship="ASP.NETBankModel.FK_dboUser_dbo_Transaction_UserId" FromRole="Transaction" ToRole="User" />
@@ -708,15 +721,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="BankDevelopmentAccount">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Summ" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="DateUpdate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DateDelete" Type="DateTime" Precision="3" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -841,9 +845,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Transaction">
+          <EntitySetMapping Name="BankDevelopmentAccount">
+            <EntityTypeMapping TypeName="ASP.NETBankModel.BankDevelopmentAccount">
+              <MappingFragment StoreEntitySet="BankDevelopmentAccount">
+                <ScalarProperty Name="DateDelete" ColumnName="DateDelete" />
+                <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
             <EntityTypeMapping TypeName="ASP.NETBankModel.Transaction">
               <MappingFragment StoreEntitySet="Transaction">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="dateUpdate" ColumnName="dateUpdate" />
                 <ScalarProperty Name="InterestDeposit" ColumnName="InterestDeposit" />
                 <ScalarProperty Name="DateCreat" ColumnName="DateCreat" />
                 <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
@@ -857,16 +873,6 @@
                 <ScalarProperty Name="Dedet" ColumnName="Dedet" />
                 <ScalarProperty Name="ChartAccountsId" ColumnName="ChartAccountsId" />
                 <ScalarProperty Name="Account" ColumnName="Account" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BankDevelopmentAccount">
-            <EntityTypeMapping TypeName="ASP.NETBankModel.BankDevelopmentAccount">
-              <MappingFragment StoreEntitySet="BankDevelopmentAccount">
-                <ScalarProperty Name="DateDelete" ColumnName="DateDelete" />
-                <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
-                <ScalarProperty Name="Summ" ColumnName="Summ" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -885,7 +891,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />

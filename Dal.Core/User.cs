@@ -17,7 +17,7 @@ namespace Dal.Core
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Transaction = new HashSet<Transaction>();
+            this.Transactions = new HashSet<Transaction>();
         }
     
         public int Id { get; set; }
@@ -57,6 +57,6 @@ namespace Dal.Core
         public virtual FamilyStatus FamilyStatus { get; set; }
         public virtual Sex Sex { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction> Transaction { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }

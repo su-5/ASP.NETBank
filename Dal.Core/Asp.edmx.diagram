@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c2f420f27da5432991d151ccc4a1ee42" Name="Diagram1" ZoomLevel="74">
+      <Diagram DiagramId="c2f420f27da5432991d151ccc4a1ee42" Name="Diagram1" ZoomLevel="72">
         <EntityTypeShape EntityType="ASP.NETBankModel.PlaceOfWork" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ASP.NETBankModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="ASP.NETBankModel.FK_dbo_Subcategories_dbo_Categories_CategoriesId" ManuallyRouted="false" />
@@ -24,12 +24,12 @@
         <EntityTypeShape EntityType="ASP.NETBankModel.Currensy" Width="1.5" PointX="9.625" PointY="0.75" />
         <EntityTypeShape EntityType="ASP.NETBankModel.Deposit" Width="1.5" PointX="9.625" PointY="7.25" />
         <AssociationConnector Association="ASP.NETBankModel.FK_dbo_Characteristic_dbo_ChartAccounts_CharacteristicAccountId" />
-        <EntityTypeShape EntityType="ASP.NETBankModel.Transaction" Width="1.5" PointX="11.875" PointY="2.625" />
+        <EntityTypeShape EntityType="ASP.NETBankModel.BankDevelopmentAccount" Width="1.5" PointX="7.25" PointY="0.875" />
+        <EntityTypeShape EntityType="ASP.NETBankModel.Transaction" Width="1.5" PointX="11.875" PointY="2.375" />
         <AssociationConnector Association="ASP.NETBankModel.FK_dbo_ChartAccounts_dbo_Transaction_ChartAccountsId" />
         <AssociationConnector Association="ASP.NETBankModel.FK_dboCurrensy_dbo_Transaction_CurrensyId" />
         <AssociationConnector Association="ASP.NETBankModel.FK_dbo_Deposit_dbo_Transaction_DepositId" />
         <AssociationConnector Association="ASP.NETBankModel.FK_dboUser_dbo_Transaction_UserId" />
-        <EntityTypeShape EntityType="ASP.NETBankModel.BankDevelopmentAccount" Width="1.5" PointX="7.25" PointY="0.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

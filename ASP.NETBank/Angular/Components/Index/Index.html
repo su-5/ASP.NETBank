@@ -2,9 +2,14 @@
     <h1>
         <button ui-sref="Clients" class="btn btn-lg btn-primary">Модуль I.«Клиенты»</button>
     </h1>
-    <h1>
-        <button ui-sref="Deposits" class="btn btn-lg btn-primary">Модуль II. Депозитные операции с физическими лицами.</button>
-    </h1>
+    <div class="btn-group" uib-dropdown is-open="status.isopen">
+        
+            <button id="single-button" type="button" uib-dropdown-toggle ng-disabled="disabled"  class="btn btn-lg btn-primary">Модуль II. Депозитные операции с физическими лицами. <span class="caret"></span></button>
+            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li role="menuitem"><a href="#" ui-sref="Deposits">Открыть новый депозит</a></li>
+                <li role="menuitem"><a href="#" ui-sref="Reports">Сформировать отчет по депозитам</a></li>
+            </ul>
+    </div>
     <h1>
         <button class="btn btn-lg btn-primary">Модуль III. Кредитные операции с физическими лицами.</button>
     </h1>

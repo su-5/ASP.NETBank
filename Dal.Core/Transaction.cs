@@ -28,8 +28,10 @@ namespace Dal.Core
         public System.DateTime DateEnd { get; set; }
         public System.DateTime DateCreat { get; set; }
         public int InterestDeposit { get; set; }
+        public Nullable<System.DateTime> dateUpdate { get; set; }
+        public string status { get; set; }
     
-        public virtual ChartAccounts ChartAccounts { get; set; }
+        public virtual ChartAccounts ChartAccount { get; set; }
         public virtual Currensy Currensy { get; set; }
         public virtual Deposit Deposit { get; set; }
         public virtual User User { get; set; }
