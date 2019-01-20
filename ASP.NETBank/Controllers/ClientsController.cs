@@ -111,7 +111,56 @@ namespace ASP.NETBank.Controllers
         {
             try
             {
-                _bllFactory.UserBll.AddClientDataBase(client);
+                if (client.ActualAddress == null)
+                {
+                    ModelState.AddModelError("addres", "Укажите адрес проживания");
+                }
+
+                if (client.CityFactResidenceID == 0)
+                {
+                    ModelState.AddModelError("City", "Укажите город проживания");
+                }
+
+                if (client.DateBirth == null)
+                {
+                    ModelState.AddModelError("DateBirth", "Укажите дату рождения");
+                }
+
+                if (client.CitizenshipID == 0)
+                {
+                    ModelState.AddModelError("Citizenship", "Укажите глаждаество");
+                }
+
+                if (client.SexID == 0)
+                {
+                    ModelState.AddModelError("Sex", "Введите под");
+                }
+
+                if (client.Name == null)
+                {
+                    ModelState.AddModelError("Name", "Введите имя");
+                }
+
+                if (client.MiddleName == null)
+                {
+                    ModelState.AddModelError("MiddleName", "Введите Отчество");
+                }
+
+                if (client.Surname == null)
+                {
+                    ModelState.AddModelError("Surname", "Введите Фамилию");
+                }
+
+                if (ModelState.IsValid)
+                {
+                    _bllFactory.UserBll.AddClientDataBase(client);
+                }
+                else
+                {
+                    return BadRequest(ModelState);
+                }
+                   
+                
                 return Ok(true);
             }
             catch (Exception ex)

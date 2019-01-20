@@ -313,7 +313,7 @@ namespace Bll.Core.Repository
                 }
 
                 List<Transaction> listOperation = _dalFactory.DbContext.Transactions
-                    .Where(w => w.Contract == deposit2.Contract && w.status != null).OrderByDescending(o => o.dateUpdate).ToList();
+                    .Where(w => w.Contract == deposit2.Contract && w.status != null).OrderBy(o => o.dateUpdate).ToList();
                 /////////////////Rows
                 int indexRow = 0;
                 sheet.CreateRow(indexRow).Height = 300;
@@ -373,34 +373,49 @@ namespace Bll.Core.Repository
                 var count = 0;
                 foreach (var operation in listOperation)
                 {
+                    if (operation.Balance == 0)
+                    {
+                        continue;
+                    }
                     DateTime date;
                     if (operation.dateUpdate != null)
                     {
                         date = (DateTime)operation.dateUpdate;
+                        date = date.AddMonths(-1);
                     }
                     else
                     {
-                        date = operation.DateCreat;
+                        date = operation.DateCreat.AddMonths(-1);
                     }
                     indexRow++;
+                    sheet.CreateRow(indexRow).Height = rowHeightCell;
+                    
+                    
+                    if (count == 0)
+                    {
+                        for (int i = 0; i < numberOfColumn + 1; i++)
+                        {
+                            sheet.GetRow(indexRow).CreateCell(i).CellStyle = digitalStyle;
+                        }
+                        sheet.GetRow(indexRow).GetCell(0).SetCellValue(count);
+                        sheet.GetRow(indexRow).GetCell(1).SetCellValue((double)deposit.Balance);
+                        sheet.GetRow(indexRow).GetCell(2).SetCellValue("  " + deposit.DateBegin.ToString("dd/MM/yyyy"));
+                        sheet.GetRow(indexRow).GetCell(3).SetCellValue("       Открытие вклада");
+                        count++;
+                        indexRow++;
+                    }
+
                     sheet.CreateRow(indexRow).Height = rowHeightCell;
                     for (int i = 0; i < numberOfColumn + 1; i++)
                     {
                         sheet.GetRow(indexRow).CreateCell(i).CellStyle = digitalStyle;
                     }
+
                     sheet.GetRow(indexRow).GetCell(0).SetCellValue(count);
-                    if (count == 0)
-                    {
-                        sheet.GetRow(indexRow).GetCell(1).SetCellValue((double)deposit.Balance);
-                        sheet.GetRow(indexRow).GetCell(2).SetCellValue("  " + deposit.DateBegin.ToString("dd/MM/yyyy"));
-                        sheet.GetRow(indexRow).GetCell(3).SetCellValue("       Открытие вклада");
-                    }
-                    else
-                    {
-                        sheet.GetRow(indexRow).GetCell(1).SetCellValue((double)operation.Credit);
+                    sheet.GetRow(indexRow).GetCell(1).SetCellValue((double)operation.Credit);
                         sheet.GetRow(indexRow).GetCell(2).SetCellValue("  " + date.ToString("dd/MM/yyyy"));
                         sheet.GetRow(indexRow).GetCell(3).SetCellValue("       Начисление процентов");
-                    }
+                    
                     count++;
                 }
 
@@ -467,9 +482,6 @@ namespace Bll.Core.Repository
             var allDipodits = _dalFactory.DbContext.Transactions.Where(w => w.status == null).ToList();
             for (int i = 0; i < allDipodits.Count(); i++)
             {
-
-
-
                 var dateOpenDeposit = allDipodits[i].DateBegin;
                 DateTime dateNav = DateTime.Now;
                 var allMouth =
@@ -477,8 +489,6 @@ namespace Bll.Core.Repository
                     -1; // считаем кол-во месяцев месжу датами отклытия депозита и текущей
                 if (allMouth > 0)
                 {
-
-
                     for (int month = 0; month < allMouth; month++)
                     {
                         // найдем счет для начисления процентов 
@@ -563,7 +573,6 @@ namespace Bll.Core.Repository
                                 }
                             }
                         }
-                        break;
                     }
                 }
 
