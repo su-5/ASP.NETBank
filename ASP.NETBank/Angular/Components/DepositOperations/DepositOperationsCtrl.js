@@ -38,11 +38,13 @@
                 Id: 1,
                 Name: 'BYN'
             },
-            {
-                Id: 2, Name: 'USD'
-            }, {
-                Id: 3, Name: 'EUR'
-            }];
+            //{
+            //    Id: 2, Name: 'USD'
+            //},
+            //{
+            //    Id: 3, Name: 'EUR'
+            //}
+        ];
 
 
         $scope.addDeposit = function (deposit, depositForm)
