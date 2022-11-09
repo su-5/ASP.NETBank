@@ -14,5 +14,14 @@ namespace ASP.NETBank.Controllers
 
             return View();
         }
+
+        public ActionResult Analitic()
+        {
+          
+                ViewBag.Title = "Home123 Page";
+
+                return View();
+          
+        }
     }
 }

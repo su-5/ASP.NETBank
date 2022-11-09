@@ -35,6 +35,12 @@
                 controller: "depositReportsController"
             });
 
+            $stateProvider.state("Analitic", {
+                url: "/Analitic",
+                templateUrl: "Angular/Components/Analitic/Analitic.html",
+                controller: "analiticController"
+            });
+
             $urlRouterProvider.otherwise("/Index");
         }]);
 })();
